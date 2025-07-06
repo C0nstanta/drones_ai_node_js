@@ -1,0 +1,147 @@
+/* src/components/organisms/Navigation/Navigation.module.css */
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1.5rem 0;
+  transition: all var(--transition-normal);
+  will-change: transform;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.scrolled .backdrop {
+  opacity: 1;
+}
+
+.scrolled {
+  padding: 1rem 0;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.5);
+}
+
+.container {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.75rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  z-index: 1;
+}
+
+.logo a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.logoText {
+  color: white;
+}
+
+.logoAccent {
+  color: var(--neon-green);
+  text-shadow: 0 0 20px var(--neon-green-glow);
+}
+
+.navItems {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+
+.navLink {
+  position: relative;
+  color: var(--gray-300);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color var(--transition-fast);
+  display: inline-block;
+}
+
+.navLink:hover {
+  color: white;
+}
+
+.linkText {
+  position: relative;
+  z-index: 1;
+}
+
+.linkUnderline {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--neon-green);
+  transform-origin: center;
+  box-shadow: 0 0 10px var(--neon-green-glow);
+}
+
+.ctaButton {
+  padding: 0.75rem 1.5rem;
+  background: var(--neon-green);
+  color: var(--bg-primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  border-radius: 4px;
+  transition: all var(--transition-normal);
+  box-shadow: 0 4px 16px rgba(0, 255, 136, 0.2);
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px var(--neon-green-glow),
+              0 6px 20px rgba(0, 255, 136, 0.3);
+}
+
+/* Mobile menu button */
+.mobileMenuButton {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navItems {
+    display: none;
+  }
+  
+  .mobileMenuButton {
+    display: block;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+}

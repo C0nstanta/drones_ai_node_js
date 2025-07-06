@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables for Military/Tech Aesthetic */
+:root {
+  /* Core Colors */
+  --color-dark-base: #0a0a0a;
+  --color-dark-surface: #141414;
+  --color-dark-elevated: #1a1a1a;
+  
+  --color-accent-primary: #00ff88;
+  --color-accent-secondary: #00ccff;
+  --color-accent-danger: #ff0044;
+  --color-accent-warning: #ff8800;
+  
+  --color-military-green: #4a5d3a;
+  --color-tactical-gray: #3a3a3a;
+  --color-steel: #5a6670;
+  
+  /* Animation Timings */
+  --duration-instant: 100ms;
+  --duration-fast: 200ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 800ms;
+  --duration-slowest: 1200ms;
+  
+  /* Easing Functions */
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
+  --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Glow Effects */
+  --glow-sm: 0 0 10px;
+  --glow-md: 0 0 20px;
+  --glow-lg: 0 0 40px;
+  --glow-xl: 0 0 80px;
+  
+  /* Gradients */
+  --gradient-accent: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));
+  --gradient-dark: linear-gradient(135deg, var(--color-dark-base), var(--color-dark-elevated));
+  --gradient-military: linear-gradient(135deg, var(--color-military-green), var(--color-tactical-gray));
+}
+
+/* Dark Mode by Default */
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-dark-base);
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* GPU Acceleration Helper Classes */
+.gpu-accelerate {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Glassmorphism Base */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Neon Glow Base */
+.glow-accent {
+  box-shadow: var(--glow-sm) var(--color-accent-primary);
+  transition: box-shadow var(--duration-normal) var(--ease-out-expo);
+}
+
+.glow-accent:hover {
+  box-shadow: var(--glow-lg) var(--color-accent-primary);
+}

@@ -1,0 +1,166 @@
+/* src/components/molecules/ServiceCard/ServiceCard.module.css */
+.serviceCard {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  min-height: 480px;
+  padding: 2rem;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  will-change: transform;
+}
+
+.glassBackground {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 0;
+}
+
+.borderGradient {
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    45deg,
+    var(--neon-green),
+    var(--tech-cyan),
+    var(--tech-electric),
+    var(--neon-green)
+  );
+  background-size: 300% 300%;
+  border-radius: 18px;
+  opacity: 0;
+  z-index: -1;
+  animation: gradientShift 3s ease infinite;
+  transition: opacity var(--transition-normal);
+}
+
+.serviceCard:hover .borderGradient {
+  opacity: 0.8;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.iconWrapper {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--neon-green), var(--neon-green-dark));
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 255, 136, 0.3);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.iconWrapper svg {
+  width: 48px;
+  height: 48px;
+  color: var(--bg-primary);
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, white, var(--gray-300));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--gray-400);
+  margin-bottom: 1.5rem;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 auto 0;
+  flex-grow: 1;
+}
+
+.features li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  color: var(--gray-300);
+  font-size: 0.95rem;
+}
+
+.featureBullet {
+  color: var(--neon-green);
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.metric {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid var(--neon-green);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.metricValue {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--neon-green);
+  margin-bottom: 0.25rem;
+}
+
+.metricLabel {
+  font-size: 0.875rem;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hologram {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(0, 255, 136, 0.1) 50%,
+    transparent 70%
+  );
+  background-size: 200% 200%;
+  animation: hologramScan 4s linear infinite;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  border-radius: 16px;
+}
+
+.serviceCard:hover .hologram {
+  opacity: 1;
+}
+
+@keyframes hologramScan {
+  0% { background-position: 200% 200%; }
+  100% { background-position: -200% -200%; }
+}

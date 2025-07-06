@@ -1,0 +1,30 @@
+/* src/components/atoms/ParticleBackground/ParticleBackground.module.css */
+.particleBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.particleBackground canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* Performance optimization for mobile */
+@media (max-width: 768px) {
+  .particleBackground {
+    opacity: 0.3;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .particleBackground {
+    display: none;
+  }
+}
