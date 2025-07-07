@@ -1,0 +1,593 @@
+/* File: /home/user/ai-drone-website_v2/src/components/organisms/DrainageStory.module.css */
+.container {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  background: linear-gradient(180deg, #0a0e27 0%, #162347 50%, #0a0e27 100%);
+}
+
+/* Hero Section with Parallax */
+.heroSection {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parallaxLayer1,
+.parallaxLayer2,
+.parallaxLayer3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  will-change: transform;
+}
+
+.parallaxLayer1 {
+  z-index: 1;
+}
+
+.parallaxLayer2 {
+  z-index: 2;
+}
+
+.parallaxLayer3 {
+  z-index: 3;
+}
+
+.pipeBackground {
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(30, 58, 138, 0.1) 0px,
+    rgba(30, 58, 138, 0.2) 2px,
+    transparent 2px,
+    transparent 20px
+  );
+  opacity: 0.5;
+}
+
+.waterFlow {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(59, 130, 246, 0.1) 50%,
+    transparent 100%
+  );
+  animation: waterFlow 10s ease-in-out infinite;
+}
+
+@keyframes waterFlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.heroContent {
+  text-align: center;
+  z-index: 10;
+  position: relative;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.heroTitle {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.heroSubtitle {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+}
+
+/* Statistics Section */
+.statsSection {
+  padding: 5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+  color: white;
+  margin-bottom: 3rem;
+  font-weight: 700;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.statItem {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.statItem:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.statValue {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+}
+
+/* Comparison Section */
+.comparisonSection {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem;
+}
+
+.comparisonContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 600px;
+  cursor: ew-resize;
+  user-select: none;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.beforeImage,
+.afterImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.beforeImage {
+  background: linear-gradient(135deg, #991b1b 0%, #dc2626 100%);
+}
+
+.afterImage {
+  background: linear-gradient(135deg, #047857 0%, #10b981 100%);
+}
+
+.imageLabel {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.comparisonStats {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+
+.comparisonStats div {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.sliderHandle {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: white;
+  cursor: ew-resize;
+  transition: width 0.2s ease;
+}
+
+.sliderHandle:hover {
+  width: 6px;
+}
+
+.sliderIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* CO2 Section */
+.co2Section {
+  padding: 5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.co2Container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.co2Visual {
+  position: relative;
+  height: 400px;
+  background: radial-gradient(circle at center, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+}
+
+.co2Particle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(220, 38, 38, 0.8);
+  border-radius: 50%;
+  bottom: 0;
+  animation: floatUp 3s ease-out infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-400px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.co2Stats {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.co2Stat {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.co2Number {
+  display: block;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #10b981;
+  margin-bottom: 0.5rem;
+}
+
+.co2Label {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Calculator Section */
+.calculatorSection {
+  padding: 5rem 2rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.calculator {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.calculatorInput {
+  margin-bottom: 2rem;
+}
+
+.calculatorInput label {
+  display: block;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.calculatorInput input[type="number"] {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.rangeSlider {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.rangeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #10b981;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.calculateButton {
+  width: 100%;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.calculateButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+}
+
+.calculatorResults {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.resultItem {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.resultValue {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #10b981;
+  margin-bottom: 0.5rem;
+}
+
+.resultLabel {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Timeline Section */
+.timelineSection {
+  padding: 5rem 2rem;
+}
+
+.timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-50%);
+}
+
+.timelineItem {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.timelineTime {
+  text-align: right;
+  font-size: 1.2rem;
+  color: #10b981;
+  font-weight: 600;
+}
+
+.timelinePoint {
+  width: 20px;
+  height: 20px;
+  background: #10b981;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+}
+
+.timelineContent {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timelineContent h3 {
+  color: white;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.timelineContent p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+}
+
+/* CTA Section */
+.ctaSection {
+  padding: 5rem 2rem;
+  text-align: center;
+  background: linear-gradient(180deg, transparent 0%, rgba(16, 185, 129, 0.1) 100%);
+}
+
+.ctaTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: white;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.ctaSubtitle {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
+}
+
+.ctaButton {
+  padding: 1.2rem 3rem;
+  background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+  border: none;
+  border-radius: 50px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+}
+
+.ctaButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.2rem;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .co2Container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .co2Visual {
+    height: 300px;
+  }
+
+  .calculatorResults {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timelineItem {
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    padding-left: 40px;
+  }
+
+  .timelineTime {
+    text-align: left;
+    grid-column: 2;
+    order: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .timelinePoint {
+    position: absolute;
+    left: 10px;
+  }
+
+  .timelineContent {
+    grid-column: 2;
+    order: 2;
+  }
+
+  .comparisonContainer {
+    height: 400px;
+  }
+
+  .imageLabel {
+    font-size: 1.5rem;
+  }
+
+  .comparisonStats div {
+    font-size: 1.2rem;
+  }
+}

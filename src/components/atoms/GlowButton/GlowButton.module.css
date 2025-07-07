@@ -1,141 +1,240 @@
 /* src/components/atoms/GlowButton/GlowButton.module.css */
-.glowButton {
+
+.button {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-heading);
+  gap: 0.5rem;
   font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  overflow: hidden;
-  transition: all var(--transition-normal);
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  will-change: transform;
+  background: transparent;
+  isolation: isolate;
 }
 
-.content {
-  position: relative;
-  z-index: 2;
-}
-
-/* Size variants */
-.sm {
+/* Size variations */
+.small {
   padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+}
+
+.medium {
+  padding: 0.75rem 1.5rem;
   font-size: 0.875rem;
 }
 
-.md {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-}
-
-.lg {
+.large {
   padding: 1rem 2rem;
-  font-size: 1.125rem;
+  font-size: 1rem;
 }
 
 .fullWidth {
   width: 100%;
 }
 
-/* Color variants */
-.primary {
-  background: linear-gradient(135deg, var(--neon-green) 0%, var(--neon-green-dark) 100%);
-  color: var(--bg-primary);
-  box-shadow: 0 4px 16px rgba(0, 255, 136, 0.2);
+/* Base glow layers */
+.glowOuter {
+  position: absolute;
+  inset: -2px;
+  border-radius: 8px;
+  background: linear-gradient(45deg, var(--glow-color-1), var(--glow-color-2));
+  opacity: 0.7;
+  filter: blur(4px);
+  transition: all 0.3s ease;
+  z-index: -2;
 }
 
-.primary:hover {
-  box-shadow: 0 0 20px var(--neon-green-glow), 
-              0 0 40px var(--neon-green-glow),
-              0 4px 16px rgba(0, 255, 136, 0.4);
+.glowInner {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  background: var(--button-bg);
+  border: 1px solid var(--border-color);
+  z-index: -1;
+}
+
+/* Enhanced hover glow */
+.hoverGlow {
+  position: absolute;
+  inset: -20px;
+  border-radius: 8px;
+  background: radial-gradient(circle at center, var(--glow-color-1), transparent);
+  opacity: 0;
+  filter: blur(20px);
+  transition: opacity 0.3s ease;
+  z-index: -3;
+}
+
+.button:hover .hoverGlow {
+  opacity: 0.4;
+}
+
+.button:hover .glowOuter {
+  opacity: 1;
+  filter: blur(6px);
+  transform: scale(1.02);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+/* Content styling */
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-color);
+}
+
+/* Variant styles */
+.primary {
+  --glow-color-1: #00ff88;
+  --glow-color-2: #0088ff;
+  --button-bg: rgba(0, 255, 136, 0.1);
+  --border-color: rgba(0, 255, 136, 0.3);
+  --text-color: #00ff88;
 }
 
 .secondary {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--neon-green);
-  border: 1px solid var(--neon-green);
-  backdrop-filter: blur(10px);
-}
-
-.secondary:hover {
-  background: rgba(0, 255, 136, 0.1);
-  box-shadow: 0 0 20px var(--neon-green-glow);
+  --glow-color-1: #0088ff;
+  --glow-color-2: #ff00ff;
+  --button-bg: rgba(0, 136, 255, 0.1);
+  --border-color: rgba(0, 136, 255, 0.3);
+  --text-color: #0088ff;
 }
 
 .danger {
-  background: linear-gradient(135deg, var(--warning-orange) 0%, var(--warning-red) 100%);
-  color: white;
-  box-shadow: 0 4px 16px rgba(255, 51, 51, 0.2);
-}
-
-.danger:hover {
-  box-shadow: 0 0 20px rgba(255, 51, 51, 0.5), 
-              0 0 40px rgba(255, 51, 51, 0.3);
-}
-
-/* Glow effect layer */
-.glowEffect {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity var(--transition-normal);
-  pointer-events: none;
-}
-
-.glowButton:hover .glowEffect {
-  opacity: 1;
+  --glow-color-1: #ff0088;
+  --glow-color-2: #ff4444;
+  --button-bg: rgba(255, 0, 136, 0.1);
+  --border-color: rgba(255, 0, 136, 0.3);
+  --text-color: #ff0088;
 }
 
 /* Ripple effect */
+.rippleContainer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
 .ripple {
   position: absolute;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.6);
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  animation: rippleAnimation 1s ease-out forwards;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent);
+  transform: translate(-50%, -50%) scale(0);
+  animation: rippleAnimation 0.6s ease-out;
 }
 
 @keyframes rippleAnimation {
-  0% {
-    width: 0;
-    height: 0;
-    opacity: 1;
-  }
-  100% {
-    width: 300px;
-    height: 300px;
+  to {
+    transform: translate(-50%, -50%) scale(4);
     opacity: 0;
   }
 }
 
-/* GPU acceleration for smooth animations */
-.glowButton::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: inherit;
-  border-radius: inherit;
-  opacity: 0;
-  transition: opacity var(--transition-normal);
-  filter: blur(10px);
-  z-index: -1;
+/* Loading state */
+.loading {
+  cursor: not-allowed;
+  opacity: 0.8;
 }
 
-.glowButton:hover::before {
-  opacity: 0.7;
+.loading .glowOuter {
+  animation: loadingPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loadingPulse {
+  0%, 100% { 
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  display: inline-block;
+}
+
+.spinnerRing {
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loadingText {
+  margin-left: 0.25rem;
+}
+
+/* Disabled state */
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.disabled .glowOuter,
+.disabled .hoverGlow {
+  display: none;
+}
+
+.disabled:hover {
+  transform: none;
+}
+
+/* Focus state for accessibility */
+.button:focus-visible {
+  outline: 2px solid var(--glow-color-1);
+  outline-offset: 4px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .glowOuter,
+  .glowInner,
+  .hoverGlow {
+    transition: none;
+  }
+  
+  .ripple {
+    animation: none;
+    display: none;
+  }
+  
+  .loading .glowOuter {
+    animation: none;
+  }
+  
+  .spinnerRing {
+    animation: spin 2s linear infinite;
+  }
 }

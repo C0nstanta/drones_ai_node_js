@@ -1,4 +1,13 @@
-// src/components/molecules/ServiceCard.tsx
+#!/bin/bash
+
+echo "🚀 Fixing AI Drone Website Components..."
+
+# Create directories
+mkdir -p src/components/molecules/ServiceCard
+mkdir -p src/components/organisms
+
+# Create ServiceCard component
+cat > src/components/molecules/ServiceCard/ServiceCard.tsx << 'EOF'
 'use client';
 
 import React, { useRef, useEffect, useState } from 'react';
@@ -48,14 +57,12 @@ export default function ServiceCard({
     
     if (!card || !icon) return;
 
-    // Initial setup
     gsap.set(card, {
       rotateY: 0,
       transformPerspective: 1000,
       transformStyle: 'preserve-3d',
     });
 
-    // Icon floating animation
     gsap.to(icon, {
       y: -10,
       duration: 2,
@@ -64,7 +71,6 @@ export default function ServiceCard({
       ease: 'power1.inOut',
     });
 
-    // Scroll trigger for card reveal
     const scrollTrigger = ScrollTrigger.create({
       trigger: card,
       start: 'top 80%',
@@ -86,7 +92,6 @@ export default function ServiceCard({
     };
   }, [delay]);
 
-  // Animate metrics when in view
   useEffect(() => {
     if (!isInView || !metricsRef.current) return;
 
@@ -104,7 +109,7 @@ export default function ServiceCard({
         snap: { innerText: 1 },
         onUpdate: function() {
           const value = Math.round(this.targets()[0].innerText);
-          element.textContent = `${metric.prefix || ''}${value}${metric.suffix}`;
+          element.textContent = (metric.prefix || '') + value + metric.suffix;
         },
       });
     });
@@ -146,37 +151,31 @@ export default function ServiceCard({
   };
 
   return (
-    <div className="service-card-container">
+    <div className="service-card-container" style={{ perspective: '1000px', width: '100%', maxWidth: '400px' }}>
       <div
         ref={cardRef}
-        className={`service-card ${styles.card}`}
+        className={'service-card ' + styles.card}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         onClick={handleClick}
       >
-        {/* Front Face */}
-        <div className={`${styles.face} ${styles.front}`}>
-          {/* Animated gradient border */}
-          <div className={`${styles.gradientBorder} ${gradient}`} />
+        <div className={styles.face + ' ' + styles.front}>
+          <div className={styles.gradientBorder + ' ' + gradient} />
           
-          {/* Glassmorphism background */}
           <div className={styles.glassBackground}>
-            {/* Icon */}
             <div ref={iconRef} className={styles.iconContainer}>
               <div className={styles.iconGlow}>
                 {icon}
               </div>
             </div>
 
-            {/* Content */}
             <h3 className={styles.title}>{title}</h3>
             <p className={styles.description}>{description}</p>
 
-            {/* Metrics */}
             <div ref={metricsRef} className={styles.metrics}>
               {metrics.map((metric, index) => (
                 <div key={index} className={styles.metric}>
-                  <div className={`metric-value ${styles.metricValue}`}>
+                  <div className={'metric-value ' + styles.metricValue}>
                     {metric.prefix || ''}0{metric.suffix}
                   </div>
                   <div className={styles.metricLabel}>{metric.label}</div>
@@ -184,7 +183,6 @@ export default function ServiceCard({
               ))}
             </div>
 
-            {/* Tags */}
             {tags.length > 0 && (
               <div className={styles.tags}>
                 {tags.map((tag, index) => (
@@ -195,18 +193,15 @@ export default function ServiceCard({
               </div>
             )}
 
-            {/* Click hint */}
             <div className={styles.clickHint}>Click to flip</div>
           </div>
         </div>
 
-        {/* Back Face */}
-        <div className={`${styles.face} ${styles.back}`}>
-          <div className={`${styles.gradientBorder} ${gradient}`} />
+        <div className={styles.face + ' ' + styles.back}>
+          <div className={styles.gradientBorder + ' ' + gradient} />
           <div className={styles.glassBackground}>
             <h4 className={styles.backTitle}>Technical Details</h4>
             
-            {/* Technical specifications or additional info */}
             <div className={styles.techSpecs}>
               <div className={styles.specItem}>
                 <span className={styles.specLabel}>Processing Power</span>
@@ -230,8 +225,8 @@ export default function ServiceCard({
 
             <button className={styles.ctaButton}>
               Learn More
-              <svg className={styles.arrow} viewBox="0 0 24 24">
-                <path d="M5 12h14m-7-7l7 7-7 7" />
+              <svg className={styles.arrow} viewBox="0 0 24 24" width="20" height="20">
+                <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" strokeWidth="2" fill="none" />
               </svg>
             </button>
           </div>
@@ -240,3 +235,259 @@ export default function ServiceCard({
     </div>
   );
 }
+EOF
+
+# Create CSS
+cat > src/components/molecules/ServiceCard/ServiceCard.module.css << 'EOF'
+.card {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+  will-change: transform;
+}
+
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.front {
+  z-index: 2;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+.gradientBorder {
+  position: absolute;
+  inset: -2px;
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(45deg, #00ff88, #0088ff, #ff0088, #00ff88);
+  background-size: 300% 300%;
+  animation: gradientShift 4s ease infinite;
+  z-index: -1;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.glassBackground {
+  position: absolute;
+  inset: 2px;
+  background: rgba(15, 15, 15, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow: hidden;
+}
+
+.iconContainer {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.iconGlow {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, rgba(0, 255, 136, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  position: relative;
+}
+
+.iconGlow svg {
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.5));
+  color: #00ff88;
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+}
+
+.description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.metric {
+  text-align: center;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.metric:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.metricValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #00ff88;
+  margin-bottom: 0.25rem;
+}
+
+.metricLabel {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.tag {
+  padding: 0.25rem 0.75rem;
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  color: #00ff88;
+  transition: all 0.3s ease;
+}
+
+.clickHint {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  opacity: 0;
+  animation: fadeInOut 3s infinite;
+  animation-delay: 2s;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.backTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.techSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.specItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.specLabel {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.specValue {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #00ff88;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 150px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.8);
+  transition: transform 0.3s ease;
+}
+
+.ctaButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #00ff88 0%, #0088ff 100%);
+  border: none;
+  border-radius: 8px;
+  color: #000000;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+}
+
+.ctaButton:hover .arrow {
+  transform: translateX(4px);
+}
+EOF
+
+echo "✅ All components created successfully!"
+echo "🎯 Your app should now work!"

@@ -1,48 +1,42 @@
+// src/components/organisms/ElphelCameraShowcase.tsx
 'use client';
 
 import React from 'react';
 
 export default function ElphelCameraShowcase() {
   return (
-    <section className="min-h-screen bg-gradient-to-b from-black to-gray-900 py-20 px-4">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-5xl font-bold text-center mb-20 text-gradient">
-          Elphel Military-Grade Cameras
-        </h2>
+    <section className="py-20 bg-gradient-to-b from-black via-orange-900/10 to-black relative overflow-hidden">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-4">
+            Elphel Military-Grade Cameras
+          </h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            0.05 pixel disparity resolution with thermal + visible spectrum
+          </p>
+        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h3 className="text-3xl font-bold mb-6">Precision Beyond Compare</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <span className="text-green-500 mr-3">✓</span>
-                <div>
-                  <strong className="text-xl">0.05 Pixel Disparity</strong>
-                  <p className="text-gray-400">Ultra-high precision for critical applications</p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-500 mr-3">✓</span>
-                <div>
-                  <strong className="text-xl">Thermal + Visible Integration</strong>
-                  <p className="text-gray-400">Dual spectrum imaging in real-time</p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-500 mr-3">✓</span>
-                <div>
-                  <strong className="text-xl">Open Source Design</strong>
-                  <p className="text-gray-400">Full transparency and customization</p>
-                </div>
-              </li>
-            </ul>
+        {/* Placeholder for camera showcase */}
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-2xl p-8 border border-orange-500/30">
+            <div className="grid md:grid-cols-3 gap-6 text-center">
+              <div className="bg-black/50 rounded-lg p-6">
+                <div className="text-4xl font-bold text-orange-500 mb-2">0.05px</div>
+                <p className="text-gray-400">Disparity Resolution</p>
+              </div>
+              <div className="bg-black/50 rounded-lg p-6">
+                <div className="text-4xl font-bold text-orange-500 mb-2">2</div>
+                <p className="text-gray-400">Spectrum Types</p>
+              </div>
+              <div className="bg-black/50 rounded-lg p-6">
+                <div className="text-4xl font-bold text-orange-500 mb-2">360°</div>
+                <p className="text-gray-400">Field of View</p>
+              </div>
+            </div>
           </div>
           
-          <div className="relative">
-            <div className="aspect-video bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg flex items-center justify-center">
-              <div className="text-6xl">📷</div>
-            </div>
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg blur opacity-20"></div>
+          <div className="mt-8 text-center">
+            <p className="text-sm text-gray-500">Technical showcase coming in Session 7</p>
           </div>
         </div>
       </div>

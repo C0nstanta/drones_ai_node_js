@@ -1,70 +1,124 @@
 // src/components/atoms/GlowButton/GlowButton.tsx
 'use client';
 
-import { ButtonHTMLAttributes, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useRef } from 'react';
 import styles from './GlowButton.module.css';
 
-interface GlowButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'danger';
-  size?: 'sm' | 'md' | 'lg';
-  fullWidth?: boolean;
+interface RippleType {
+  x: number;
+  y: number;
+  id: number;
 }
 
-export const GlowButton: React.FC<GlowButtonProps> = ({
+interface GlowButtonProps {
+  children: React.ReactNode;
+  onClick?: () => void;
+  size?: 'small' | 'medium' | 'large';
+  variant?: 'primary' | 'secondary' | 'danger';
+  disabled?: boolean;
+  loading?: boolean;
+  fullWidth?: boolean;
+  className?: string;
+}
+
+export default function GlowButton({
   children,
+  onClick,
+  size = 'medium',
   variant = 'primary',
-  size = 'md',
+  disabled = false,
+  loading = false,
   fullWidth = false,
   className = '',
-  onClick,
-  ...props
-}) => {
+}: GlowButtonProps) {
+  const [ripples, setRipples] = useState<RippleType[]>([]);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const [ripples, setRipples] = useState<Array<{ x: number; y: number; key: number }>>([]);
+  const rippleCounter = useRef(0);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (disabled || loading) return;
+
+    // Create ripple effect
     const button = buttonRef.current;
-    if (!button) return;
+    if (button) {
+      const rect = button.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const id = rippleCounter.current++;
 
-    const rect = button.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const key = Date.now();
+      setRipples(prev => [...prev, { x, y, id }]);
 
-    setRipples(prev => [...prev, { x, y, key }]);
-    setTimeout(() => {
-      setRipples(prev => prev.filter(ripple => ripple.key !== key));
-    }, 1000);
+      // Remove ripple after animation
+      setTimeout(() => {
+        setRipples(prev => prev.filter(ripple => ripple.id !== id));
+      }, 600);
+    }
 
-    onClick?.(e);
+    // Call onClick handler
+    onClick?.();
+  };
+
+  const sizeClasses = {
+    small: styles.small,
+    medium: styles.medium,
+    large: styles.large,
+  };
+
+  const variantClasses = {
+    primary: styles.primary,
+    secondary: styles.secondary,
+    danger: styles.danger,
   };
 
   return (
-    <motion.button
+    <button
       ref={buttonRef}
-      className={`${styles.glowButton} ${styles[variant]} ${styles[size]} ${
-        fullWidth ? styles.fullWidth : ''
-      } ${className}`}
+      className={`
+        ${styles.button} 
+        ${sizeClasses[size]} 
+        ${variantClasses[variant]}
+        ${disabled ? styles.disabled : ''}
+        ${loading ? styles.loading : ''}
+        ${fullWidth ? styles.fullWidth : ''}
+        ${className}
+      `}
       onClick={handleClick}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      transition={{ duration: 0.2, ease: 'easeInOut' }}
-      {...props}
+      disabled={disabled || loading}
     >
-      <span className={styles.content}>{children}</span>
-      <div className={styles.glowEffect} />
+      {/* Glow layers */}
+      <span className={styles.glowOuter} />
+      <span className={styles.glowInner} />
       
-      {ripples.map(({ x, y, key }) => (
-        <span
-          key={key}
-          className={styles.ripple}
-          style={{
-            left: x,
-            top: y,
-          }}
-        />
-      ))}
-    </motion.button>
+      {/* Button content */}
+      <span className={styles.content}>
+        {loading ? (
+          <>
+            <span className={styles.spinner}>
+              <span className={styles.spinnerRing} />
+            </span>
+            <span className={styles.loadingText}>Loading...</span>
+          </>
+        ) : (
+          children
+        )}
+      </span>
+
+      {/* Ripple effects */}
+      <span className={styles.rippleContainer}>
+        {ripples.map(ripple => (
+          <span
+            key={ripple.id}
+            className={styles.ripple}
+            style={{
+              left: ripple.x,
+              top: ripple.y,
+            }}
+          />
+        ))}
+      </span>
+
+      {/* Enhanced glow effect on hover */}
+      <span className={styles.hoverGlow} />
+    </button>
   );
-};
+}

@@ -1,0 +1,306 @@
+/* src/components/organisms/Navigation.module.css */
+
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+  background: rgba(10, 10, 10, var(--bg-opacity, 0));
+  backdrop-filter: blur(var(--bg-blur, 0px));
+  -webkit-backdrop-filter: blur(var(--bg-blur, 0px));
+}
+
+.navigation::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.5) 0%, 
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.scrolled::before {
+  opacity: 1;
+}
+
+.scrolled {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo styling */
+.logo {
+  position: relative;
+  z-index: 10;
+}
+
+.logoGlow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.logoGlow:hover {
+  transform: scale(1.05);
+}
+
+.logoSvg {
+  filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.5));
+  color: #00ff88;
+  transition: all 0.3s ease;
+}
+
+.logoGlow:hover .logoSvg {
+  filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.8));
+  transform: rotate(10deg);
+}
+
+.logoText {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, #00ff88 0%, #0088ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Desktop Navigation */
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navItem {
+  position: relative;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 0.5rem 0;
+  will-change: transform;
+}
+
+.navItem:hover {
+  color: #ffffff;
+}
+
+.navItemText {
+  position: relative;
+  z-index: 2;
+}
+
+.navItemGlow {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00ff88, #0088ff);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.navItem:hover .navItemGlow,
+.navItem.active .navItemGlow {
+  transform: scaleX(1);
+}
+
+.navItem.active {
+  color: #00ff88;
+}
+
+/* CTA Button */
+.ctaButton {
+  position: relative;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 2px solid #00ff88;
+  border-radius: 8px;
+  color: #00ff88;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.ctaButton span {
+  position: relative;
+  z-index: 2;
+}
+
+.ctaGlow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #00ff88, #0088ff);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+  color: #000000;
+}
+
+.ctaButton:hover .ctaGlow {
+  opacity: 1;
+}
+
+/* Mobile Toggle */
+.mobileToggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.mobileToggle:hover {
+  color: #00ff88;
+  transform: scale(1.1);
+}
+
+/* Mobile Navigation */
+.mobileNav {
+  position: fixed;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 10, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateY(0);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+
+.mobileNav.open {
+  transform: translateY(-100%);
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobileNavContent {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobileNavItem {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: 500;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.mobileNavItem:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(10px);
+}
+
+.mobileCta {
+  padding: 1rem;
+  background: linear-gradient(135deg, #00ff88, #0088ff);
+  border-radius: 8px;
+  color: #000000;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.mobileCta:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+  .desktopNav {
+    gap: 1.5rem;
+  }
+  
+  .navItem {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .desktopNav {
+    display: none;
+  }
+  
+  .mobileToggle {
+    display: block;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .navigation,
+  .navItem,
+  .ctaButton,
+  .mobileNav,
+  .logoGlow {
+    transition: none;
+  }
+  
+  .navItemGlow {
+    transition: none;
+    transform: scaleX(1);
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: light) {
+  .navigation {
+    background: rgba(255, 255, 255, var(--bg-opacity, 0));
+  }
+  
+  .navItem {
+    color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .navItem:hover {
+    color: #000000;
+  }
+}
