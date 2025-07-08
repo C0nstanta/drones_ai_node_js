@@ -1,0 +1,315 @@
+.section {
+  position: relative;
+  padding: 6rem 0;
+  background: linear-gradient(180deg, #000 0%, rgba(0, 20, 40, 0.3) 100%);
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 0%, #00ff88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 5rem;
+  perspective: 1000px;
+}
+
+.teamCard {
+  position: relative;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.cardInner {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.cardBg {
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, 
+    rgba(0, 255, 136, 0.1) 0%, 
+    rgba(0, 136, 255, 0.1) 100%);
+  border-radius: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.cardBg.active {
+  opacity: 1;
+}
+
+.avatar {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1.5rem;
+  transform: translateZ(50px);
+}
+
+.avatarGlow {
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(circle, rgba(0, 255, 136, 0.3) 0%, transparent 70%);
+  filter: blur(20px);
+  opacity: 0.5;
+}
+
+.avatarPlaceholder {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #00ff88 0%, #0088ff 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #000;
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+}
+
+.avatarCircuit {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: #00ff88;
+}
+
+.memberName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  transform: translateZ(30px);
+}
+
+.memberRole {
+  font-size: 1rem;
+  color: #00ff88;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transform: translateZ(20px);
+}
+
+.memberBio {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  transform: translateZ(10px);
+}
+
+.specialties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  transform: translateZ(15px);
+}
+
+.specialty {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.specialtyDot {
+  width: 4px;
+  height: 4px;
+  background: #00ff88;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
+}
+
+.specialty:hover {
+  background: rgba(0, 255, 136, 0.2);
+  border-color: #00ff88;
+  transform: scale(1.05);
+}
+
+.cardGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(0, 255, 136, 0.1) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.teamCard:hover .cardGlow {
+  opacity: 1;
+}
+
+.cardBorder {
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  padding: 1px;
+  background: linear-gradient(135deg, 
+    transparent 0%, 
+    rgba(0, 255, 136, 0.5) 50%, 
+    transparent 100%);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.teamCard:hover .cardBorder {
+  opacity: 1;
+  animation: rotate-border 3s linear infinite;
+}
+
+@keyframes rotate-border {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.joinTeam {
+  position: relative;
+  padding: 4rem;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  border-radius: 2rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.joinTeam::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='circuit' x='0' y='0' width='100' height='100' patternUnits='userSpaceOnUse'%3E%3Cpath d='M10 10h80v80h-80z' fill='none' stroke='%2300ff88' stroke-width='0.5' opacity='0.1'/%3E%3Ccircle cx='10' cy='10' r='2' fill='%2300ff88' opacity='0.3'/%3E%3Ccircle cx='90' cy='90' r='2' fill='%2300ff88' opacity='0.3'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23circuit)'/%3E%3C/svg%3E");
+  opacity: 0.3;
+}
+
+.joinContent {
+  position: relative;
+  z-index: 1;
+}
+
+.joinTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 0%, #00ff88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.joinText {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
+}
+
+.joinButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  background: #00ff88;
+  color: #000;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.joinButton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.5) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.joinButton:hover::before {
+  transform: translateX(100%);
+}
+
+.joinButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+}
+
+.joinArrow {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.joinButton:hover .joinArrow {
+  transform: translateX(5px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .teamGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .joinTeam {
+    padding: 2rem;
+  }
+}

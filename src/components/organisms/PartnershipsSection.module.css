@@ -1,0 +1,316 @@
+.section {
+  position: relative;
+  padding: 6rem 0;
+  background: linear-gradient(180deg, rgba(0, 20, 40, 0.3) 0%, #000 100%);
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 0%, #00ff88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.connections {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.partnersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 5rem;
+  perspective: 1000px;
+  position: relative;
+  z-index: 1;
+}
+
+.partnerCard {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.partnerInner {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.partnerInner:hover {
+  transform: translateY(-10px) rotateX(5deg);
+  border-color: rgba(0, 255, 136, 0.4);
+  box-shadow: 
+    0 20px 40px rgba(0, 255, 136, 0.2),
+    0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.partnerLogo {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1.5rem;
+}
+
+.logoGlow {
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(circle, var(--partner-color, #00ff88) 0%, transparent 70%);
+  filter: blur(20px);
+  opacity: 0.3;
+}
+
+.logoPlaceholder {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--partner-color, #00ff88) 0%, rgba(0, 0, 0, 0.5) 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.partnerName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.partnerType {
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  color: #00ff88;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.partnerDescription {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.partnerStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+}
+
+.statDot {
+  width: 8px;
+  height: 8px;
+  background: #00ff88;
+  border-radius: 50%;
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.cardCorners {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cardCorners span {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.cardCorners span:nth-child(1) {
+  top: 0;
+  left: 0;
+  border-top-color: #00ff88;
+  border-left-color: #00ff88;
+  border-top-left-radius: 1.5rem;
+}
+
+.cardCorners span:nth-child(2) {
+  top: 0;
+  right: 0;
+  border-top-color: #00ff88;
+  border-right-color: #00ff88;
+  border-top-right-radius: 1.5rem;
+}
+
+.cardCorners span:nth-child(3) {
+  bottom: 0;
+  left: 0;
+  border-bottom-color: #00ff88;
+  border-left-color: #00ff88;
+  border-bottom-left-radius: 1.5rem;
+}
+
+.cardCorners span:nth-child(4) {
+  bottom: 0;
+  right: 0;
+  border-bottom-color: #00ff88;
+  border-right-color: #00ff88;
+  border-bottom-right-radius: 1.5rem;
+}
+
+.partnerInner:hover .cardCorners span {
+  width: 40px;
+  height: 40px;
+}
+
+.communitySection {
+  text-align: center;
+  padding: 4rem;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  border-radius: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.communitySection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 50%);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.communityTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 0%, #00ff88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+.communityText {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  position: relative;
+}
+
+.achievements {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  position: relative;
+}
+
+.achievement {
+  position: relative;
+}
+
+.achievementCircle {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.achievementRing {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.achievementContent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.achievementValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #00ff88;
+}
+
+.achievementLabel {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+  max-width: 100px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .partnersGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .connections {
+    display: none;
+  }
+  
+  .communitySection {
+    padding: 2rem;
+  }
+  
+  .achievements {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

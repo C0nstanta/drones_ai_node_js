@@ -1,0 +1,206 @@
+/* /src/components/organisms/ContactHero.module.css */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+}
+
+.backgroundPattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.circuitSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.circuit {
+  filter: drop-shadow(0 0 3px currentColor);
+}
+
+.circuitNode {
+  filter: drop-shadow(0 0 10px currentColor);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.5); }
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #00ff88 0%, #0088ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  min-height: 1.2em;
+}
+
+.subtitle {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 3rem;
+  line-height: 1.6;
+  opacity: 0;
+}
+
+.iconContainer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.contactIcon {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: #00ff88;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.emailIcon {
+  top: 20%;
+  left: 10%;
+}
+
+.phoneIcon {
+  top: 25%;
+  right: 15%;
+}
+
+.locationIcon {
+  bottom: 30%;
+  left: 20%;
+}
+
+.messageIcon {
+  bottom: 25%;
+  right: 10%;
+}
+
+.contactIcon svg {
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.ctaContainer {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  padding: 1rem 2.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaPrimary {
+  background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+  color: #000;
+  border: none;
+}
+
+.ctaPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+}
+
+.ctaSecondary {
+  background: transparent;
+  color: #00ff88;
+  border: 2px solid #00ff88;
+}
+
+.ctaSecondary:hover {
+  background: rgba(0, 255, 136, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.scrollDot {
+  width: 4px;
+  height: 10px;
+  background: #00ff88;
+  border-radius: 2px;
+  animation: scrollBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(15px); opacity: 0.3; }
+}
+
+@media (max-width: 768px) {
+  .contactIcon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .contactIcon svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .ctaContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .ctaPrimary,
+  .ctaSecondary {
+    width: 100%;
+    max-width: 300px;
+  }
+}

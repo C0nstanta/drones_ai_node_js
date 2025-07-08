@@ -1,0 +1,46 @@
+/* Call to Action Section */
+.ctaSection {
+  position: relative;
+  padding: 6rem 2rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 255, 136, 0.05) 50%, transparent 100%);
+}
+
+.ctaContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ctaTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #00ff88 0%, #0088ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.ctaSubtitle {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 2rem;
+}
+
+.ctaButton {
+  padding: 1rem 3rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  background: #00ff88;
+  color: #000;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 255, 136, 0.3);
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 255, 136, 0.5);
+}
