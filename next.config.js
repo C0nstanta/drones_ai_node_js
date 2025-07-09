@@ -1,9 +1,21 @@
+// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   images: {
-    domains: [],
+    unoptimized: true,
+    domains: ['adaptiveautohub.com'],
   },
-  // Remove the experimental optimizeCss flag
+  // For static export if needed
+  // output: 'export',
+  // trailingSlash: true,
+  webpack: (config) => {
+    config.externals.push({
+      'utf-8-validate': 'commonjs utf-8-validate',
+      'bufferutil': 'commonjs bufferutil',
+    });
+    return config;
+  },
 }
 
 module.exports = nextConfig
