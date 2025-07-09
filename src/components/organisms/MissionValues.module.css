@@ -1,0 +1,298 @@
+/* src/components/organisms/MissionValues.module.css */
+
+.section {
+  position: relative;
+  padding: 6rem 0;
+  background: #000;
+  overflow: hidden;
+}
+
+/* Background effects */
+.backgroundPattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0, 136, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(255, 0, 255, 0.03) 0%, transparent 50%);
+  z-index: 1;
+}
+
+.glowEffect1 {
+  position: absolute;
+  top: 20%;
+  left: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+  filter: blur(100px);
+  animation: drift1 30s ease-in-out infinite;
+}
+
+.glowEffect2 {
+  position: absolute;
+  bottom: 20%;
+  right: -20%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(0, 136, 255, 0.1) 0%, transparent 70%);
+  filter: blur(100px);
+  animation: drift2 35s ease-in-out infinite;
+}
+
+@keyframes drift1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(100px, -50px); }
+}
+
+@keyframes drift2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-100px, 50px); }
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Mission Statement */
+.missionStatement {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.sectionTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #00ff88, #0088ff, #ff00ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.missionText {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Core Values */
+.valuesTitle {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #fff;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+
+.valueCard {
+  position: relative;
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.cardInner {
+  position: relative;
+  padding: 2.5rem;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  z-index: 2;
+}
+
+.valueCard:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+.valueCard:hover .iconContainer {
+  transform: scale(1.1);
+}
+
+.valueCard:hover .cardBackground {
+  opacity: 0.2;
+}
+
+/* Icon styling */
+.iconContainer {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.iconGlow {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  filter: blur(20px);
+  opacity: 0.5;
+}
+
+/* Color variants */
+.green .iconContainer {
+  background: rgba(0, 255, 136, 0.1);
+  color: #00ff88;
+}
+
+.green .iconGlow {
+  background: #00ff88;
+}
+
+.green .cardBackground {
+  background: radial-gradient(circle at top left, rgba(0, 255, 136, 0.2), transparent);
+}
+
+.blue .iconContainer {
+  background: rgba(0, 136, 255, 0.1);
+  color: #0088ff;
+}
+
+.blue .iconGlow {
+  background: #0088ff;
+}
+
+.blue .cardBackground {
+  background: radial-gradient(circle at top right, rgba(0, 136, 255, 0.2), transparent);
+}
+
+.purple .iconContainer {
+  background: rgba(255, 0, 255, 0.1);
+  color: #ff00ff;
+}
+
+.purple .iconGlow {
+  background: #ff00ff;
+}
+
+.purple .cardBackground {
+  background: radial-gradient(circle at bottom left, rgba(255, 0, 255, 0.2), transparent);
+}
+
+.cardBackground {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.valueTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.valueDescription {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.5rem;
+}
+
+.metric {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #00ff88;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 255, 136, 0.1);
+  border-radius: 50px;
+  display: inline-block;
+  border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+/* Additional Values */
+.additionalValues {
+  margin-top: 4rem;
+}
+
+.additionalTitle {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.additionalGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.additionalValue {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.additionalValue:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(0, 255, 136, 0.2);
+  transform: translateX(10px);
+}
+
+.additionalIcon {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 136, 255, 0.1);
+  border-radius: 12px;
+  color: #0088ff;
+}
+
+.additionalValueTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #fff;
+}
+
+.additionalValueDesc {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .valuesGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .additionalGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,196 +1,192 @@
+// src/components/organisms/TeamSection.tsx
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useEffect, useRef, useState } from 'react';
+import { Linkedin, Mail, Shield, Code, Cpu, Globe } from 'lucide-react';
 import styles from './TeamSection.module.css';
 
-gsap.registerPlugin(ScrollTrigger);
+interface TeamMember {
+  name: string;
+  role: string;
+  expertise: string[];
+  bio: string;
+  icon: React.ReactNode;
+  gradient: string;
+}
 
-const teamMembers = [
+const teamMembers: TeamMember[] = [
   {
     name: 'Dr. Sarah Chen',
     role: 'CEO & Co-Founder',
-    bio: 'Former NASA engineer with 15 years in autonomous systems',
-    specialties: ['AI Systems', 'Autonomous Navigation'],
-    avatar: '/images/team/sarah-chen.jpg'
+    expertise: ['Aerospace Engineering', 'AI/ML', 'Strategic Partnerships'],
+    bio: 'Former NASA engineer with 15+ years in autonomous systems. Led breakthrough projects in drone navigation.',
+    icon: <Globe className="w-6 h-6" />,
+    gradient: 'green'
   },
   {
-    name: 'Michael Rodriguez',
-    role: 'CTO',
-    bio: 'Led drone development at major defense contractors',
-    specialties: ['RTOS Development', 'Hardware Integration'],
-    avatar: '/images/team/michael-rodriguez.jpg'
+    name: 'Col. Michael Rodriguez',
+    role: 'CTO & Defense Liaison',
+    expertise: ['Military Technology', 'RTOS Development', 'Security Systems'],
+    bio: '20 years USAF, specialized in UAV operations. Architect of our anti-drone defense systems.',
+    icon: <Shield className="w-6 h-6" />,
+    gradient: 'blue'
   },
   {
-    name: 'Emily Thompson',
-    role: 'Head of AI',
-    bio: 'PhD in Computer Vision from University of Utah',
-    specialties: ['Computer Vision', 'Machine Learning'],
-    avatar: '/images/team/emily-thompson.jpg'
+    name: 'Anna Kovalenko',
+    role: 'Head of AI Research',
+    expertise: ['Computer Vision', 'Neural Networks', 'Real-time Processing'],
+    bio: 'PhD in AI from MIT. Published 30+ papers on autonomous navigation and computer vision.',
+    icon: <Cpu className="w-6 h-6" />,
+    gradient: 'purple'
   },
   {
-    name: 'David Park',
-    role: 'VP of Operations',
-    bio: 'Scaled operations for multiple Utah tech unicorns',
-    specialties: ['Operations', 'Strategic Planning'],
-    avatar: '/images/team/david-park.jpg'
+    name: 'James Thompson',
+    role: 'VP of Engineering',
+    expertise: ['Embedded Systems', 'Hardware Integration', 'Thermal Imaging'],
+    bio: 'Led Elphel partnership integration. Expert in thermal camera systems and embedded computing.',
+    icon: <Code className="w-6 h-6" />,
+    gradient: 'orange'
   }
 ];
 
 export default function TeamSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
+  const [hoveredMember, setHoveredMember] = useState<number | null>(null);
+  
   useEffect(() => {
-    const cards = cardsRef.current?.querySelectorAll(`.${styles.teamCard}`);
-    
-    // Stagger card animations
-    cards?.forEach((card, index) => {
-      gsap.fromTo(card,
+    const loadAnimations = async () => {
+      const { gsap } = await import('gsap');
+      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+      
+      gsap.registerPlugin(ScrollTrigger);
+      
+      // Animate section title
+      gsap.fromTo('.team-title',
+        { opacity: 0, y: 50 },
         {
-          opacity: 0,
-          y: 100,
-          rotateY: -30,
-          scale: 0.8
-        },
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: '.team-title',
+            start: 'top 80%',
+            end: 'bottom 20%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+      
+      // Animate team cards
+      const cards = document.querySelectorAll('.team-card');
+      gsap.fromTo(cards,
+        { opacity: 0, y: 50, rotateY: -15 },
         {
           opacity: 1,
           y: 0,
           rotateY: 0,
-          scale: 1,
-          duration: 1,
-          delay: index * 0.2,
-          ease: 'power3.out',
+          duration: 0.8,
+          stagger: 0.2,
           scrollTrigger: {
-            trigger: card,
-            start: 'top 80%'
+            trigger: '.team-grid',
+            start: 'top 80%',
+            end: 'bottom 20%',
+            toggleActions: 'play none none reverse'
           }
         }
       );
-    });
-
-    // Animate section title
-    const title = sectionRef.current?.querySelector(`.${styles.title}`);
-    gsap.fromTo(title,
-      {
-        opacity: 0,
-        y: 50,
-        scale: 0.9
-      },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 1,
-        scrollTrigger: {
-          trigger: title,
-          start: 'top 80%'
-        }
-      }
-    );
+    };
+    
+    loadAnimations();
   }, []);
-
+  
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20;
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * -20;
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
     
-    gsap.to(card, {
-      rotateY: x,
-      rotateX: y,
-      duration: 0.3,
-      ease: 'power2.out',
-      transformPerspective: 1000
-    });
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const rotateX = (y - centerY) / 10;
+    const rotateY = (centerX - x) / 10;
+    
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
   };
-
+  
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
-    gsap.to(e.currentTarget, {
-      rotateY: 0,
-      rotateX: 0,
-      duration: 0.5,
-      ease: 'power2.out'
-    });
+    e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
   };
-
+  
   return (
     <section ref={sectionRef} className={styles.section}>
+      {/* Background mesh gradient */}
+      <div className={styles.meshGradient} />
+      
       <div className={styles.container}>
-        <div className={styles.header}>
-          <h2 className={styles.title}>Meet Our Team</h2>
-          <p className={styles.subtitle}>
-            Utah's brightest minds driving the future of drone technology
-          </p>
-        </div>
-
-        <div ref={cardsRef} className={styles.teamGrid}>
+        <h2 className={`${styles.title} team-title`}>Leadership Team</h2>
+        <p className={`${styles.subtitle} team-title`}>
+          Visionaries with decades of combined experience in aerospace, AI, and defense
+        </p>
+        
+        <div className={`${styles.teamGrid} team-grid`}>
           {teamMembers.map((member, index) => (
-            <div 
-              key={index} 
-              className={styles.teamCard}
+            <div
+              key={index}
+              className={`${styles.teamCard} ${styles[member.gradient]} team-card`}
               onMouseMove={(e) => handleMouseMove(e, index)}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={(e) => {
-                handleMouseLeave(e);
-                setHoveredIndex(null);
-              }}
+              onMouseLeave={handleMouseLeave}
+              onMouseEnter={() => setHoveredMember(index)}
             >
               <div className={styles.cardInner}>
-                {/* 3D effect layer */}
-                <div className={`${styles.cardBg} ${hoveredIndex === index ? styles.active : ''}`} />
+                {/* Glow effect */}
+                <div className={`${styles.glowEffect} ${hoveredMember === index ? styles.active : ''}`} />
                 
-                <div className={styles.avatar}>
-                  <div className={styles.avatarGlow} />
-                  <div className={styles.avatarPlaceholder}>
-                    {member.name.split(' ').map(n => n[0]).join('')}
-                  </div>
-                  {/* Tech circuit pattern overlay */}
-                  <svg className={styles.avatarCircuit} viewBox="0 0 100 100">
-                    <path d="M20,50 L80,50 M50,20 L50,80 M30,30 L70,70 M70,30 L30,70" 
-                          stroke="currentColor" 
-                          strokeWidth="0.5" 
-                          fill="none" 
-                          opacity="0.3"/>
-                  </svg>
+                {/* Icon */}
+                <div className={styles.iconWrapper}>
+                  {member.icon}
                 </div>
                 
+                {/* Content */}
                 <h3 className={styles.memberName}>{member.name}</h3>
                 <p className={styles.memberRole}>{member.role}</p>
-                <p className={styles.memberBio}>{member.bio}</p>
                 
-                <div className={styles.specialties}>
-                  {member.specialties.map((specialty, i) => (
-                    <span key={i} className={styles.specialty}>
-                      <span className={styles.specialtyDot} />
-                      {specialty}
+                <div className={styles.expertiseTags}>
+                  {member.expertise.map((skill, skillIndex) => (
+                    <span key={skillIndex} className={styles.tag}>
+                      {skill}
                     </span>
                   ))}
                 </div>
-
-                {/* Hover effect elements */}
-                <div className={styles.cardGlow} />
-                <div className={styles.cardBorder} />
+                
+                <p className={styles.memberBio}>{member.bio}</p>
+                
+                {/* Contact buttons */}
+                <div className={styles.contactButtons}>
+                  <button className={styles.contactBtn} aria-label="LinkedIn">
+                    <Linkedin className="w-5 h-5" />
+                  </button>
+                  <button className={styles.contactBtn} aria-label="Email">
+                    <Mail className="w-5 h-5" />
+                  </button>
+                </div>
+                
+                {/* 3D effect overlay */}
+                <div className={styles.overlay} />
               </div>
             </div>
           ))}
         </div>
-
+        
+        {/* Join team CTA */}
         <div className={styles.joinTeam}>
-          <div className={styles.joinContent}>
-            <h3 className={styles.joinTitle}>Join Our Growing Team</h3>
-            <p className={styles.joinText}>
-              We're always looking for talented individuals who share our passion for innovation
-            </p>
-            <button className={styles.joinButton}>
-              <span>View Open Positions</span>
-              <svg className={styles.joinArrow} viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path d="M5 12h14M12 5l7 7-7 7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-          </div>
+          <h3 className={styles.joinTitle}>Join Our Team</h3>
+          <p className={styles.joinText}>
+            We're always looking for exceptional talent to help shape the future of drone technology
+          </p>
+          <button className={styles.joinButton}>
+            View Open Positions
+          </button>
         </div>
       </div>
     </section>
