@@ -79,3 +79,35 @@ body {
 .glow-accent:hover {
   box-shadow: var(--glow-lg) var(--color-accent-primary);
 }
+
+/* Add these to your /src/styles/globals.css */
+
+:root {
+  /* Contact Page Specific Variables */
+  --contact-form-bg: rgba(255, 255, 255, 0.02);
+  --contact-form-border: rgba(255, 255, 255, 0.1);
+  --contact-input-bg: rgba(255, 255, 255, 0.05);
+  --contact-input-focus: rgba(255, 255, 255, 0.08);
+  --contact-success: #00ff88;
+  --contact-error: #ff0088;
+  --contact-warning: #ffcc00;
+}
+
+/* Glassmorphism utilities */
+.glass {
+  background: var(--contact-form-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--contact-form-border);
+}
+
+/* Form animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

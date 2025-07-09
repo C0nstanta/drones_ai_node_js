@@ -1,322 +1,256 @@
-/* /src/components/organisms/ContactMethods.module.css */
+/* File: /src/components/organisms/ContactMethods.module.css */
+/* Absolute path: /src/components/organisms/ContactMethods.module.css */
+
 .section {
-  padding: 4rem 0;
+  padding: 5rem 0;
   position: relative;
+  background: linear-gradient(to bottom, transparent, rgba(0, 255, 136, 0.02), transparent);
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 3rem;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .title {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
-  background: linear-gradient(135deg, #00ff88 0%, #0088ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  text-align: center;
   margin-bottom: 1rem;
+  color: #ffffff;
 }
 
 .subtitle {
   font-size: 1.125rem;
   color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  margin-bottom: 3rem;
   max-width: 600px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .methodsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-bottom: 4rem;
-}
-
-.methodCard {
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
-  padding: 2.5rem;
-  text-align: center;
-  transition: all 0.3s ease;
-  transform-style: preserve-3d;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.methodCard:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(0, 255, 136, 0.3);
-}
-
-.methodIcon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.5));
-}
-
-.methodTitle {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: white;
-  margin-bottom: 0.5rem;
-}
-
-.methodDescription {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 1.5rem;
-  line-height: 1.5;
-}
-
-.methodContact {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-}
-
-.methodLink {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 12px;
-  text-decoration: none;
-  color: #00ff88;
-  font-size: 0.875rem;
-  transition: all 0.3s ease;
-}
-
-.methodLink:hover {
-  background: rgba(0, 255, 136, 0.1);
-  transform: translateY(-2px);
-}
-
-.linkIcon {
-  font-size: 1rem;
-}
-
-.responseTime {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: rgba(0, 255, 136, 0.1);
-  border-radius: 50px;
-  font-size: 0.875rem;
-  color: #00ff88;
-  font-weight: 500;
-}
-
-.responseIcon {
-  font-size: 1rem;
-}
-
-.socialSection {
-  text-align: center;
-  padding: 3rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  margin-bottom: 3rem;
-}
-
-.socialTitle {
-  font-size: 2rem;
-  font-weight: 600;
-  color: white;
-  margin-bottom: 0.5rem;
-}
-
-.socialSubtitle {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 2rem;
-}
-
-.socialGrid {
-  display: flex;
-  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.socialIcon {
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  color: white;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.socialIcon::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--social-color);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: -1;
-}
-
-.socialIcon:hover {
-  color: white;
-  transform: translateY(-4px) rotate(5deg);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.socialIcon:hover::before {
-  opacity: 0.2;
-}
-
-.newsletter {
-  position: relative;
-  background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 136, 255, 0.1) 100%);
-  border-radius: 24px;
-  padding: 3rem;
-  overflow: hidden;
-}
-
-.newsletterContent {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.newsletterTitle {
-  font-size: 2rem;
-  font-weight: 600;
-  color: white;
-  margin-bottom: 0.5rem;
-}
-
-.newsletterDescription {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 2rem;
-  line-height: 1.5;
-}
-
-.newsletterForm {
-  display: flex;
-  gap: 1rem;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.newsletterInput {
-  flex: 1;
-  padding: 1rem 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50px;
-  color: white;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-
-.newsletterInput::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.newsletterInput:focus {
-  outline: none;
-  background: rgba(255, 255, 255, 0.15);
-  border-color: #00ff88;
-  box-shadow: 0 0 0 2px rgba(0, 255, 136, 0.2);
-}
-
-.newsletterButton {
-  padding: 1rem 2rem;
-  background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
-  color: #000;
-  font-weight: 600;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.newsletterButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
-}
-
-.newsletterDecoration {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.decorationCircle {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 255, 136, 0.2) 0%, transparent 70%);
-  animation: float 10s ease-in-out infinite;
-}
-
-.decorationCircle:nth-child(1) {
-  top: -100px;
-  left: -100px;
-  animation-delay: 0s;
-}
-
-.decorationCircle:nth-child(2) {
-  bottom: -100px;
-  right: -100px;
-  animation-delay: 3.3s;
-}
-
-.decorationCircle:nth-child(3) {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation-delay: 6.6s;
-}
-
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -30px) scale(1.1); }
-  66% { transform: translate(-30px, 30px) scale(0.9); }
+  margin-bottom: 4rem;
 }
 
 @media (max-width: 768px) {
   .methodsGrid {
     grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto 4rem;
+  }
+}
+
+.methodCard {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.methodCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(0, 255, 136, 0.05) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.methodCard:hover {
+  border-color: rgba(0, 255, 136, 0.3);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 255, 136, 0.2);
+}
+
+.methodCard:hover::before {
+  opacity: 1;
+}
+
+.highlight {
+  border-color: rgba(255, 0, 255, 0.2);
+  background: rgba(255, 0, 255, 0.03);
+}
+
+.highlight:hover {
+  border-color: rgba(255, 0, 255, 0.4);
+  box-shadow: 0 15px 35px rgba(255, 0, 255, 0.2);
+}
+
+.iconWrapper {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1rem;
+  background: linear-gradient(135deg, #00ff88 0%, #0088ff 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.methodCard:hover .iconWrapper {
+  transform: rotateY(180deg);
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  color: #000000;
+  z-index: 2;
+}
+
+.highlightIcon {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  color: #ff00ff;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% { 
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+.methodTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.methodValue {
+  font-size: 1rem;
+  color: #00ff88;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.methodDescription {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.hoverEffect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(0, 255, 136, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.6s ease;
+  pointer-events: none;
+}
+
+.methodCard:active .hoverEffect {
+  width: 300px;
+  height: 300px;
+}
+
+.partnershipCTA {
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 136, 255, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.partnershipCTA::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 50%);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.ctaContent {
+  position: relative;
+  z-index: 2;
+}
+
+.ctaTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2rem;
+}
+
+.ctaGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  .ctaGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
   
-  .newsletterForm {
-    flex-direction: column;
+  .partnershipCTA {
+    padding: 2rem 1rem;
   }
-  
-  .newsletterButton {
-    width: 100%;
-  }
-  
-  .socialGrid {
-    gap: 1rem;
-  }
-  
-  .socialIcon {
-    width: 50px;
-    height: 50px;
-  }
+}
+
+.ctaItem {
+  text-align: center;
+}
+
+.ctaNumber {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00ff88 0%, #0088ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.ctaLabel {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }

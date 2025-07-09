@@ -1,127 +1,123 @@
-// /src/components/organisms/ContactMethods.tsx
+// File: /src/components/organisms/ContactMethods.tsx
+// Absolute path: /src/components/organisms/ContactMethods.tsx
+
 'use client';
 
-import { useRef, useEffect } from 'react';
-import gsap from 'gsap';
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Mail, Phone, Clock, MessageCircle, Shield, Zap } from 'lucide-react';
 import styles from './ContactMethods.module.css';
-import { FiTwitter, FiLinkedin, FiFacebook, FiInstagram, FiYoutube, FiGithub } from 'react-icons/fi';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const SOCIAL_LINKS = [
-  { name: 'Twitter', icon: FiTwitter, url: 'https://twitter.com/aidronesolutions', color: '#1DA1F2' },
-  { name: 'LinkedIn', icon: FiLinkedin, url: 'https://linkedin.com/company/aidronesolutions', color: '#0077B5' },
-  { name: 'Facebook', icon: FiFacebook, url: 'https://facebook.com/aidronesolutions', color: '#1877F2' },
-  { name: 'Instagram', icon: FiInstagram, url: 'https://instagram.com/aidronesolutions', color: '#E4405F' },
-  { name: 'YouTube', icon: FiYoutube, url: 'https://youtube.com/@aidronesolutions', color: '#FF0000' },
-  { name: 'GitHub', icon: FiGithub, url: 'https://github.com/aidronesolutions', color: '#181717' },
-];
+interface ContactMethod {
+  id: string;
+  icon: React.ElementType;
+  title: string;
+  value: string;
+  description: string;
+  action: () => void;
+  highlight?: boolean;
+}
 
-const CONTACT_METHODS = [
-  {
-    title: 'Sales Team',
-    description: 'Ready to transform your business with AI drones?',
-    email: 'sales@aidronesolutions.com',
-    phone: '+1 (801) 555-0100',
-    responseTime: 'Response within 2 hours',
-    icon: '💼',
-  },
-  {
-    title: 'Technical Support',
-    description: 'Need help with your drone systems?',
-    email: 'support@aidronesolutions.com',
-    phone: '+1 (801) 555-0111',
-    responseTime: '24/7 support available',
-    icon: '🛠️',
-  },
-  {
-    title: 'Partnerships',
-    description: 'Interested in collaborating with us?',
-    email: 'partners@aidronesolutions.com',
-    phone: '+1 (801) 555-0122',
-    responseTime: 'Response within 24 hours',
-    icon: '🤝',
-  },
-];
-
-const ContactMethods = () => {
+export default function ContactMethods() {
+  const methodsRef = useRef<HTMLDivElement[]>([]);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const socialRef = useRef<HTMLDivElement>(null);
+
+  const contactMethods: ContactMethod[] = [
+    {
+      id: 'email',
+      icon: Mail,
+      title: 'Email Us',
+      value: 'info@adaptiveautohub.com',
+      description: 'Get a response within 24 hours',
+      action: () => window.location.href = 'mailto:info@adaptiveautohub.com'
+    },
+    {
+      id: 'phone',
+      icon: Phone,
+      title: 'Call Us',
+      value: '+1 (801) 555-0123',
+      description: 'Mon-Fri 9AM-6PM MST',
+      action: () => window.location.href = 'tel:+18015550123'
+    },
+    {
+      id: 'chat',
+      icon: MessageCircle,
+      title: 'Live Chat',
+      value: 'Start Chat',
+      description: 'Available during business hours',
+      action: () => console.log('Open chat widget')
+    },
+    {
+      id: 'emergency',
+      icon: Shield,
+      title: 'Emergency Support',
+      value: '24/7 Hotline',
+      description: 'For urgent drone defense needs',
+      action: () => window.location.href = 'tel:+18015559911',
+      highlight: true
+    }
+  ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate section entrance
-      gsap.fromTo(sectionRef.current,
-        { opacity: 0 },
+      // Animate cards with stagger
+      methodsRef.current.forEach((method, index) => {
+        gsap.fromTo(method,
+          { 
+            y: 100,
+            opacity: 0,
+            scale: 0.8
+          },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.8,
+            delay: index * 0.1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: method,
+              start: 'top 85%',
+              once: true
+            }
+          }
+        );
+
+        // Hover animation
+        method.addEventListener('mouseenter', () => {
+          gsap.to(method, {
+            scale: 1.05,
+            duration: 0.3,
+            ease: "power2.out"
+          });
+        });
+
+        method.addEventListener('mouseleave', () => {
+          gsap.to(method, {
+            scale: 1,
+            duration: 0.3,
+            ease: "power2.out"
+          });
+        });
+      });
+
+      // Animate section header
+      gsap.fromTo('.methods-header',
+        { y: 50, opacity: 0 },
         {
+          y: 0,
           opacity: 1,
           duration: 1,
           scrollTrigger: {
             trigger: sectionRef.current,
             start: 'top 80%',
-            once: true,
-          },
+            once: true
+          }
         }
       );
-
-      // Animate contact method cards
-      const cards = sectionRef.current?.querySelectorAll(`.${styles.methodCard}`);
-      cards?.forEach((card, index) => {
-        gsap.fromTo(card,
-          { opacity: 0, y: 50, rotationY: -15 },
-          {
-            opacity: 1,
-            y: 0,
-            rotationY: 0,
-            duration: 0.8,
-            delay: index * 0.15,
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 85%',
-              once: true,
-            },
-          }
-        );
-
-        // Hover effect
-        card.addEventListener('mouseenter', () => {
-          gsap.to(card, {
-            scale: 1.05,
-            boxShadow: '0 20px 40px rgba(0, 255, 136, 0.3)',
-            duration: 0.3,
-          });
-        });
-
-        card.addEventListener('mouseleave', () => {
-          gsap.to(card, {
-            scale: 1,
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
-            duration: 0.3,
-          });
-        });
-      });
-
-      // Animate social icons
-      const socialIcons = socialRef.current?.querySelectorAll(`.${styles.socialIcon}`);
-      socialIcons?.forEach((icon, index) => {
-        gsap.fromTo(icon,
-          { opacity: 0, scale: 0, rotation: -180 },
-          {
-            opacity: 1,
-            scale: 1,
-            rotation: 0,
-            duration: 0.6,
-            delay: 0.8 + index * 0.1,
-            ease: 'back.out(1.7)',
-            scrollTrigger: {
-              trigger: socialRef.current,
-              start: 'top 85%',
-              once: true,
-            },
-          }
-        );
-      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -129,91 +125,63 @@ const ContactMethods = () => {
 
   return (
     <section ref={sectionRef} className={styles.section}>
-      <div className={styles.header}>
-        <h2 className={styles.title}>Multiple Ways to Connect</h2>
-        <p className={styles.subtitle}>
-          Choose the best way to reach our team
-        </p>
-      </div>
+      <div className={styles.container}>
+        <div className="methods-header">
+          <h2 className={styles.title}>Get In Touch</h2>
+          <p className={styles.subtitle}>
+            Choose your preferred method to connect with our team
+          </p>
+        </div>
 
-      <div className={styles.methodsGrid}>
-        {CONTACT_METHODS.map((method, index) => (
-          <div key={index} className={styles.methodCard}>
-            <div className={styles.methodIcon}>{method.icon}</div>
-            <h3 className={styles.methodTitle}>{method.title}</h3>
-            <p className={styles.methodDescription}>{method.description}</p>
-            
-            <div className={styles.methodContact}>
-              <a href={`mailto:${method.email}`} className={styles.methodLink}>
-                <span className={styles.linkIcon}>✉️</span>
-                {method.email}
-              </a>
-              <a href={`tel:${method.phone}`} className={styles.methodLink}>
-                <span className={styles.linkIcon}>📞</span>
-                {method.phone}
-              </a>
-            </div>
-
-            <div className={styles.responseTime}>
-              <span className={styles.responseIcon}>⏱️</span>
-              {method.responseTime}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className={styles.socialSection}>
-        <h3 className={styles.socialTitle}>Follow Us</h3>
-        <p className={styles.socialSubtitle}>
-          Stay updated with our latest innovations and drone technology
-        </p>
-        
-        <div ref={socialRef} className={styles.socialGrid}>
-          {SOCIAL_LINKS.map((social, index) => {
-            const Icon = social.icon;
+        <div className={styles.methodsGrid}>
+          {contactMethods.map((method, index) => {
+            const Icon = method.icon;
             return (
-              <a
-                key={index}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.socialIcon}
-                style={{ '--social-color': social.color } as React.CSSProperties}
-                title={social.name}
+              <div
+                key={method.id}
+                ref={el => methodsRef.current[index] = el!}
+                className={`${styles.methodCard} ${method.highlight ? styles.highlight : ''}`}
+                onClick={method.action}
               >
-                <Icon size={24} />
-              </a>
+                <div className={styles.iconWrapper}>
+                  <Icon className={styles.icon} />
+                  {method.highlight && <Zap className={styles.highlightIcon} />}
+                </div>
+                
+                <h3 className={styles.methodTitle}>{method.title}</h3>
+                <p className={styles.methodValue}>{method.value}</p>
+                <p className={styles.methodDescription}>{method.description}</p>
+                
+                <div className={styles.hoverEffect} />
+              </div>
             );
           })}
         </div>
-      </div>
 
-      <div className={styles.newsletter}>
-        <div className={styles.newsletterContent}>
-          <h3 className={styles.newsletterTitle}>Stay in the Loop</h3>
-          <p className={styles.newsletterDescription}>
-            Subscribe to our newsletter for the latest drone technology updates and exclusive offers
-          </p>
-          <form className={styles.newsletterForm}>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className={styles.newsletterInput}
-              required
-            />
-            <button type="submit" className={styles.newsletterButton}>
-              Subscribe
-            </button>
-          </form>
-        </div>
-        <div className={styles.newsletterDecoration}>
-          <div className={styles.decorationCircle} />
-          <div className={styles.decorationCircle} />
-          <div className={styles.decorationCircle} />
+        <div className={styles.partnershipCTA}>
+          <div className={styles.ctaContent}>
+            <h3 className={styles.ctaTitle}>Why Partner With Us?</h3>
+            <div className={styles.ctaGrid}>
+              <div className={styles.ctaItem}>
+                <span className={styles.ctaNumber}>900m/day</span>
+                <span className={styles.ctaLabel}>Inspection Speed</span>
+              </div>
+              <div className={styles.ctaItem}>
+                <span className={styles.ctaNumber}>80%</span>
+                <span className={styles.ctaLabel}>Carbon Reduction</span>
+              </div>
+              <div className={styles.ctaItem}>
+                <span className={styles.ctaNumber}>24/7</span>
+                <span className={styles.ctaLabel}>Support Available</span>
+              </div>
+              <div className={styles.ctaItem}>
+                <span className={styles.ctaNumber}>2</span>
+                <span className={styles.ctaLabel}>Strategic Partnerships</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default ContactMethods;
+}
