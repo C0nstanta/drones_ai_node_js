@@ -1,7 +1,7 @@
 // File: /src/app/services/page.tsx
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
-import { ServiceShowcaseSkeleton } from '@/components/skeletons/ServiceShowcaseSkeleton';
+import ServiceShowcaseSkeleton from '@/components/skeletons/ServiceShowcaseSkeleton';
 
 // Dynamic import for performance
 const ServiceShowcase = dynamic(

@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { Calendar, Handshake, Rocket, Globe, Target, Award } from 'lucide-react';
+import { Calendar, Users, Rocket, Globe, Target, Award } from 'lucide-react';
 import styles from './CompanyStory.module.css';
 
 interface TimelineEvent {
@@ -25,7 +25,7 @@ const timelineEvents: TimelineEvent[] = [
     year: '2025',
     title: 'InterProInvest Partnership',
     description: 'Strategic alliance with Ukrainian military technology leader for anti-drone defense systems',
-    icon: <Handshake className="w-6 h-6" />
+    icon: <Users className="w-6 h-6" />
   },
   {
     year: '2025',

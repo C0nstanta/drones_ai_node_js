@@ -11,7 +11,7 @@
     "production": "next build && next start"
   },
   "dependencies": {
-    "next": "12.3.4",
+    "next": "14.2.30",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "@react-three/fiber": "^8.15.12",

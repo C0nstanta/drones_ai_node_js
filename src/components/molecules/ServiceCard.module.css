@@ -351,7 +351,7 @@
 }
 
 /* Container for proper 3D perspective */
-:global(.service-card-container) {
+.serviceCardContainer {
   perspective: 1000px;
   width: 100%;
   max-width: 400px;

@@ -1,0 +1,32 @@
+You have triggered an unhandledRejection, you may have forgotten to catch a Promise rejection:
+Error: ENOENT: no such file or directory, open '/home/kos/drone_ai_node_v1/.next/BUILD_ID'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1246:14)
+    at async setupFsCheck (/home/kos/drone_ai_node_v1/node_modules/next/dist/server/lib/router-utils/filesystem.js:142:19)
+    at async initialize (/home/kos/drone_ai_node_v1/node_modules/next/dist/server/lib/router-server.js:56:23)
+    at async NextCustomServer.prepare (/home/kos/drone_ai_node_v1/node_modules/next/dist/server/next.js:241:28)
+You have triggered an unhandledRejection, you may have forgotten to catch a Promise rejection:
+Error: ENOENT: no such file or directory, open '/home/kos/drone_ai_node_v1/.next/BUILD_ID'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1246:14)
+    at async setupFsCheck (/home/kos/drone_ai_node_v1/node_modules/next/dist/server/lib/router-utils/filesystem.js:142:19)
+    at async initialize (/home/kos/drone_ai_node_v1/node_modules/next/dist/server/lib/router-server.js:56:23)
+    at async NextCustomServer.prepare (/home/kos/drone_ai_node_v1/node_modules/next/dist/server/next.js:241:28)
+You have triggered an unhandledRejection, you may have forgotten to catch a Promise rejection:
+Error: ENOENT: no such file or directory, open '/home/kos/drone_ai_node_v1/.next/BUILD_ID'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1246:14)
+    at async setupFsCheck (/home/kos/drone_ai_node_v1/node_modules/next/dist/server/lib/router-utils/filesystem.js:142:19)
+    at async initialize (/home/kos/drone_ai_node_v1/node_modules/next/dist/server/lib/router-server.js:56:23)
+    at async NextCustomServer.prepare (/home/kos/drone_ai_node_v1/node_modules/next/dist/server/next.js:241:28)
+You have triggered an unhandledRejection, you may have forgotten to catch a Promise rejection:
+Error: ENOENT: no such file or directory, open '/home/kos/drone_ai_node_v1/.next/BUILD_ID'
+    at async open (node:internal/fs/promises:639:25)
+    at async Object.readFile (node:internal/fs/promises:1246:14)
+    at async setupFsCheck (/home/kos/drone_ai_node_v1/node_modules/next/dist/server/lib/router-utils/filesystem.js:142:19)
+    at async initialize (/home/kos/drone_ai_node_v1/node_modules/next/dist/server/lib/router-server.js:56:23)
+    at async NextCustomServer.prepare (/home/kos/drone_ai_node_v1/node_modules/next/dist/server/next.js:241:28)
+2025-08-03T03:43:09:  ⚠ "next start" does not work with "output: standalone" configuration. Use "node .next/standalone/server.js" instead.
+2025-08-03T03:43:10:  ⚠ "next start" does not work with "output: standalone" configuration. Use "node .next/standalone/server.js" instead.
+2025-08-03T03:46:40:  ⚠ "next start" does not work with "output: standalone" configuration. Use "node .next/standalone/server.js" instead.
+2025-08-03T03:46:40:  ⚠ "next start" does not work with "output: standalone" configuration. Use "node .next/standalone/server.js" instead.
