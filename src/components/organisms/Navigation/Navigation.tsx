@@ -77,10 +77,10 @@ export const Navigation: React.FC = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Link href="/">
-            <span className={styles.logoText}>DRONE</span>
-            <span className={styles.logoAccent}>AI</span>
-          </Link>
+        <Link href="/">
+          <span className={styles.logoText}>Deep Sky</span>
+          <span className={styles.logoAccent}>Solutions</span>
+        </Link>
         </motion.div>
         
         {/* Nav Items */}

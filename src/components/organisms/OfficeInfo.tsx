@@ -17,8 +17,8 @@ const OFFICE_HOURS = [
 
 const CONTACT_INFO = {
   phone: '+1 (801) 555-0123',
-  email: 'info@aidronesolutions.com',
-  address: '123 Innovation Drive, Salt Lake City, UT 84101',
+  email: 'info@deepskysolutions.com',
+  address: '430 S Texas 6, Suite 206, Houston, TX 77079',
 };
 
 const OfficeInfo = () => {
@@ -101,7 +101,7 @@ const OfficeInfo = () => {
       <div className={styles.header}>
         <h2 className={styles.title}>Visit Our Office</h2>
         <p className={styles.subtitle}>
-          Experience our drone technology firsthand at our Salt Lake City headquarters
+          Experience our drone technology firsthand at our Houston, Texas headquarters
         </p>
       </div>
 

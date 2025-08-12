@@ -45,8 +45,8 @@ export default function Map() {
   const initializeMap = () => {
     if (!mapRef.current || mapInstanceRef.current) return;
 
-    // AI Drone Solutions coordinates in Salt Lake City
-    const aiDroneLocation = { lat: 40.7608, lng: -111.8910 };
+    // Deep Sky Solutions coordinates in Houston, Texas
+    const aiDroneLocation = { lat: 29.782116975600278, lng: -95.64553397632886 };
 
     // Map styling for dark theme
     const mapStyles = [
@@ -157,7 +157,7 @@ export default function Map() {
     const marker = new window.google.maps.Marker({
       position: aiDroneLocation,
       map: mapInstanceRef.current,
-      title: 'AI Drone Solutions Headquarters',
+      title: 'Deep Sky Solutions Headquarters',
       animation: window.google.maps.Animation.DROP,
       icon: {
         path: window.google.maps.SymbolPath.CIRCLE,
@@ -173,10 +173,10 @@ export default function Map() {
     const infoWindow = new window.google.maps.InfoWindow({
       content: `
         <div style="color: #000; padding: 10px;">
-          <h3 style="margin: 0 0 5px 0; font-weight: bold;">AI Drone Solutions</h3>
-          <p style="margin: 0 0 5px 0;">222 S Main Street<br>Salt Lake City, UT 84101</p>
+          <h3 style="margin: 0 0 5px 0; font-weight: bold;">Deep Sky Solutions</h3>
+          <p style="margin: 0 0 5px 0;">430 Highway 6 South, Suite 206<br>Houston, Texas, UT 84101</p>
           <p style="margin: 0 0 5px 0;">Phone: <a href="tel:+18015553766">+1 (801) 555-DRONE</a></p>
-          <a href="https://maps.google.com/?q=222+S+Main+Street+Salt+Lake+City+UT+84101" target="_blank" style="color: #10b981;">
+          <a href="https://maps.google.com/?q=430+Highway+6+South+Suite+206+Houston+TX+77079" target="_blank" style="color: #10b981;">
             Get Directions
           </a>
         </div>
@@ -221,9 +221,9 @@ export default function Map() {
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
             <circle cx="12" cy="10" r="3"></circle>
           </svg>
-          <p style="margin-top: 16px; font-size: 18px;">AI Drone Solutions</p>
-          <p style="margin-top: 8px; font-size: 14px;">222 S Main Street, Salt Lake City, UT 84101</p>
-          <a href="https://maps.google.com/?q=222+S+Main+Street+Salt+Lake+City+UT+84101" 
+          <p style="margin-top: 16px; font-size: 18px;">Deep Sky Solutions</p>
+          <p style="margin-top: 8px; font-size: 14px;">430 S Texas 6, Suite 206, Houston, TX 77079</p>
+          <a href="https://maps.google.com/?q=430+Highway+6+South+Suite+206+Houston+TX+77079" 
              target="_blank" 
              rel="noopener noreferrer"
              style="margin-top: 16px; padding: 8px 16px; background: #10b981; color: white; text-decoration: none; border-radius: 4px;">

@@ -127,7 +127,7 @@ export const formatAutoResponseTemplate = (name: string): string => {
       <div style="background: #f5f5f5; padding: 30px; border-radius: 8px; margin-bottom: 30px;">
         <p style="font-size: 16px; line-height: 1.6;">
           Hi ${name},<br><br>
-          Thank you for reaching out to AI Drone Solutions. We've received your inquiry and our team will review it shortly.
+          Thank you for reaching out to Deep Sky Solutions. We've received your inquiry and our team will review it shortly.
         </p>
         
         <p style="font-size: 16px; line-height: 1.6;">
@@ -140,9 +140,9 @@ export const formatAutoResponseTemplate = (name: string): string => {
       
       <div style="text-align: center; padding: 20px; border-top: 1px solid #e0e0e0;">
         <p style="color: #666; font-size: 14px;">
-          AI Drone Solutions<br>
-          123 Innovation Drive, Salt Lake City, UT 84101<br>
-          <a href="https://aidronesolutions.com" style="color: #00ff88;">www.aidronesolutions.com</a>
+          Deep Sky Solutions<br>
+          430 S Texas 6, Suite 206, Houston, TX 77079<br>
+          <a href="https://deepskysolutions.com/" style="color: #00ff88;">www.deepskysolutions.com/</a>
         </p>
       </div>
     </div>

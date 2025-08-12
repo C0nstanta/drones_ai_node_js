@@ -1,7 +1,7 @@
 {
-  "name": "ai-drone-website",
+  "name": "deep-sky-solutions",
   "version": "1.0.0",
-  "description": "AI Drone Solutions - Adaptive Auto Hub LLC",
+  "description": "Deep Sky Solutions",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

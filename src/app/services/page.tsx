@@ -13,25 +13,25 @@ const ServiceShowcase = dynamic(
 );
 
 export const metadata: Metadata = {
-  title: 'Our Services - AI Drone Solutions | Drainage, Thermal Detection, Anti-Drone',
+  title: 'Our Services - Deep Sky Solutions | Drainage, Thermal Detection, Anti-Drone',
   description: 'Explore our cutting-edge drone services: AI-powered drainage inspection (900m/day), Elphel thermal detection with AFWERX partnership, and InterProInvest anti-drone defense systems.',
   keywords: 'drone services, drainage inspection AI, thermal imaging drone, anti-drone technology, RIFF systems, Elphel LWIR, InterProInvest defense',
   openGraph: {
-    title: 'Drone Technology Services - AI Drone Solutions',
+    title: 'Drone Technology Services - Deep Sky Solutions',
     description: 'Revolutionary drone services: 900m/day drainage inspection, military-grade thermal detection, combat-proven anti-drone systems',
-    url: 'https://your-domain.com/services',
+    url: 'https://deepskysolutions.com/services',
     images: [
       {
         url: '/services-og.jpg',
         width: 1200,
         height: 630,
-        alt: 'AI Drone Solutions Services',
+        alt: 'Deep Sky Solutions Services',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Drone Technology Services - AI Drone Solutions',
+    title: 'Drone Technology Services - Deep Sky Solutions',
     description: 'Revolutionary drone services powered by partnerships with InterProInvest and Elphel',
   },
 };
@@ -67,7 +67,7 @@ export default function ServicesPage() {
             serviceType: 'Drone Technology Solutions',
             provider: {
               '@type': 'Organization',
-              name: 'AI Drone Solutions',
+              name: 'Deep Sky Solutions',
             },
             hasOfferCatalog: {
               '@type': 'OfferCatalog',

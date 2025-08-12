@@ -60,7 +60,7 @@ export default function ContactHero() {
           Let's Build the Future Together
         </h1>
         <p ref={subtitleRef} className={styles.subtitle}>
-          Partner with Adaptive Auto Hub for revolutionary drone solutions
+          Partner with Deep Sky Solutions for revolutionary drone solutions
         </p>
       </div>
       <div className={styles.scrollIndicator}>

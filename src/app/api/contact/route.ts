@@ -131,7 +131,7 @@ export async function POST(request: NextRequest) {
     // Send internal notification email
     const internalEmailHtml = formatEmailTemplate(sanitizedData);
     const internalEmailSent = await sendEmail(
-      process.env.CONTACT_EMAIL_TO || 'info@aidronesolutions.com',
+      process.env.CONTACT_EMAIL_TO || 'info@deepskysolutions.com',
       `New ${sanitizedData.contactType} inquiry from ${sanitizedData.name}`,
       internalEmailHtml
     );
@@ -144,7 +144,7 @@ export async function POST(request: NextRequest) {
     const autoResponseHtml = formatAutoResponseTemplate(sanitizedData.name);
     await sendEmail(
       sanitizedData.email,
-      'Thank you for contacting AI Drone Solutions',
+      'Thank you for contacting Deep Sky Solutions',
       autoResponseHtml
     );
 

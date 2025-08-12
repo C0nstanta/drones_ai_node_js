@@ -8,29 +8,29 @@ import Navigation from '@/components/organisms/Navigation';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'AI Drone Solutions - Salt Lake City | Drainage Inspection, Thermal Detection, Anti-Drone Defense',
-  description: 'Leading AI-powered drone technology provider based in Salt Lake City, Utah. Revolutionary drainage inspection (900m/day), military-grade thermal detection with Elphel, and combat-proven anti-drone systems from InterProInvest. Serving Utah and the Mountain West.',
-  keywords: 'Salt Lake City drone services, Utah AI drone technology, drone inspection Salt Lake City, thermal imaging Utah, anti-drone Utah, RF jamming, RIFF, Elphel, InterProInvest, LWIR, drainage inspection, AFWERX, Silicon Slopes drone company, Mountain West drone solutions',
-  authors: [{ name: 'AI Drone Solutions' }],
-  creator: 'AI Drone Solutions',
-  publisher: 'AI Drone Solutions',
+  title: 'Deep Sky Solutions - Houston, Texas | Drainage Inspection, Thermal Detection, Anti-Drone Defense',
+  description: 'Leading AI-powered drone technology provider based in Houston, Texas. Revolutionary drainage inspection (900m/day), military-grade thermal detection with Elphel, and combat-proven anti-drone systems from InterProInvest.',
+  keywords: 'Houston, Texas drone services, AI drone technology, drone inspection Houston, Texas, thermal imaging Utah, RF jamming, RIFF, Elphel, InterProInvest, LWIR, drainage inspection, AFWERX, Silicon Slopes drone company, Mountain West drone solutions',
+  authors: [{ name: 'Deep Sky Solutions' }],
+  creator: 'Deep Sky Solutions',
+  publisher: 'Deep Sky Solutions',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://aidronesolutions.com'),
+  metadataBase: new URL('https://deepskysolutions.com'),
   openGraph: {
-    title: 'AI Drone Solutions - Salt Lake City\'s Premier Drone Technology Provider',
-    description: 'Based in Salt Lake City, Utah. Revolutionary drone solutions: 900m/day drainage inspection, military-grade thermal detection, combat-proven anti-drone defense systems. Serving the Mountain West region.',
-    url: 'https://aidronesolutions.com',
-    siteName: 'AI Drone Solutions',
+    title: 'Deep Sky Solutions - Houston, Texas\'s Premier Drone Technology Provider',
+    description: 'Based in Houston, Texas. Revolutionary drone solutions: 900m/day drainage inspection, military-grade thermal detection, combat-proven anti-drone defense systems. Serving the Mountain West region.',
+    url: 'https://deepskysolutions.com',
+    siteName: 'Deep Sky Solutions',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'AI Drone Solutions - Salt Lake City Drone Technology Leader',
+        alt: 'Deep Sky Solutions - Houston, Texas Drone Technology Leader',
       }
     ],
     locale: 'en_US',
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Drone Solutions - Salt Lake City Drone Technology',
-    description: 'Utah\'s premier drone solutions provider. Drainage inspection, thermal detection, anti-drone defense. Based in Silicon Slopes.',
+    title: 'Deep Sky Solutions - Houston, Texas Drone Technology',
+    description: 'Texas\'s premier drone solutions provider. Drainage inspection, thermal detection, anti-drone defense. Based in Silicon Slopes.',
     images: ['/og-image.jpg'],
   },
   robots: {

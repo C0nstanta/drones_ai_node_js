@@ -116,7 +116,7 @@ export default function SaltLakeSection() {
     <section ref={sectionRef} className={styles.section}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Why Salt Lake City?</h2>
+          <h2 className={styles.title}>Why Houston, Texas?</h2>
           <p className={styles.subtitle}>
             Our strategic location in Utah's capital provides unique advantages 
             for drone technology development and deployment
@@ -173,7 +173,7 @@ export default function SaltLakeSection() {
                 
                 <div className={styles.mapOverlay}>
                   <h4 className={styles.locationTitle}>Headquarters</h4>
-                  <p className={styles.locationAddress}>Downtown Salt Lake City</p>
+                  <p className={styles.locationAddress}>Downtown Houston, Texas</p>
                   <p className={styles.coordinates}>40.7608° N, 111.8910° W</p>
                 </div>
 

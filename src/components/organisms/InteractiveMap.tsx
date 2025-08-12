@@ -13,8 +13,8 @@ mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || '';
 const OFFICE_LOCATION = {
   lng: -111.8910,
   lat: 40.7608,
-  address: '123 Innovation Drive, Salt Lake City, UT 84101',
-  name: 'AI Drone Solutions HQ',
+  address: '430 S Texas 6, Suite 206, Houston, TX 77079',
+  name: 'Deep Sky Solutions HQ',
 };
 
 const InteractiveMap = () => {
@@ -199,7 +199,7 @@ const InteractiveMap = () => {
     <div className={styles.mapContainer}>
       <div className={styles.mapHeader}>
         <h3 className={styles.mapTitle}>Find Us</h3>
-        <p className={styles.mapSubtitle}>Visit our Salt Lake City headquarters</p>
+        <p className={styles.mapSubtitle}>Visit our Houston, Texas headquarters</p>
       </div>
 
       <div ref={mapContainer} className={styles.map}>

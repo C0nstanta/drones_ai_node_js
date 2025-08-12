@@ -158,14 +158,7 @@ export default function HoustonSection() {
               </div>
             </div>
             
-            <div className={styles.address}>
-              <MapPin className={styles.addressIcon} />
-              <div>
-                <h4>Visit Our Innovation Lab</h4>
-                <p>Salt Lake City, Utah</p>
-                <p className={styles.addressDetail}>Next to Elphel Inc. Facility</p>
-              </div>
-            </div>
+ 
           </div>
           
           {/* Interactive Map */}

@@ -95,7 +95,7 @@ export default function InteractiveGlobe() {
         style={{ top: '40%', left: '30%' }}
       />
       <div className={styles.locationTooltip} style={{ top: '40%', left: '30%' }}>
-        Salt Lake City, UT
+        Houston, Texas, UT
       </div>
       
       <div 

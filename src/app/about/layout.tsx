@@ -1,19 +1,19 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Us - AI Drone Solutions | Salt Lake City Headquarters',
-  description: 'Learn about our journey from a Salt Lake City startup to a leader in AI-powered drone technology. Discover our team, partnerships, and commitment to the Mountain West region.',
-  keywords: 'AI drone company Salt Lake City, Silicon Slopes drone technology, Utah tech companies, Mountain West drone solutions',
+  title: 'About Us - Deep Sky Solutions | Houston, Texas Headquarters',
+  description: 'Learn about our journey from a Houston, Texas startup to a leader in AI-powered drone technology. Discover our team, partnerships, and commitment to the Mountain West region.',
+  keywords: 'AI drone company Houston, Texas',
   openGraph: {
-    title: 'About AI Drone Solutions - Pioneering from Salt Lake City',
-    description: 'From our headquarters in Silicon Slopes, we\'re revolutionizing drone technology with AI-powered solutions.',
+    title: 'About Deep Sky Solutions - Pioneering from Houston, Texas',
+    description: 'From our headquarters in Houston, Texas, we\'re revolutionizing drone technology with AI-powered solutions.',
     url: 'https://your-domain.com/about',
     images: [
       {
         url: '/og-about.jpg',
         width: 1200,
         height: 630,
-        alt: 'AI Drone Solutions Salt Lake City Headquarters',
+        alt: 'Deep Sky Solutions Houston, Texas Headquarters',
       }
     ],
   },

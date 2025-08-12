@@ -4,25 +4,17 @@ const nextConfig = {
   output: 'standalone',
   images: {
     unoptimized: true,
-    domains: ['adaptiveautohub.com'],
+    domains: ['deepskysolutions.com', 'deepskysolutions.com'],
   },
-  // For static export if needed
-  // output: 'export',
-  // trailingSlash: true,
   webpack: (config) => {
     config.externals.push({
       'utf-8-validate': 'commonjs utf-8-validate',
-      'bufferutil': 'commonjs bufferutil',
+      bufferutil: 'commonjs bufferutil',
     });
     return config;
   },
-}
+  typescript: { ignoreBuildErrors: true },
+  eslint: { ignoreDuringBuilds: true },
+};
+module.exports = nextConfig;
 
-module.exports = nextConfig
-
-module.exports.typescript = {
-  ignoreBuildErrors: true
-}
-module.exports.eslint = {
-  ignoreDuringBuilds: true
-}

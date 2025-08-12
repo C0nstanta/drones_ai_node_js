@@ -150,7 +150,7 @@ export default function Navigation() {
     >
       <div className={styles.container}>
         <Link href="/" className={styles.logo}>
-          <span className={styles.logoText}>DRONE</span>
+          <span className={styles.logoText}>Deep Sky Solutions</span>
           <span className={styles.logoAccent}>AI</span>
         </Link>
 

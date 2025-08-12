@@ -23,22 +23,14 @@ interface Office {
 
 const offices: Office[] = [
   {
-    id: 'salt-lake-city',
-    name: 'Salt Lake City Headquarters',
-    status: 'active',
-    address: 'Next to Elphel Facility, Salt Lake City, UT',
-    description: 'Our main facility featuring advanced thermal imaging labs and drone testing areas.',
-    coordinates: { lat: 40.7608, lng: -111.8910 },
-    features: ['Thermal Camera Lab', 'Drone Testing Facility', 'Client Demo Area']
-  },
-  {
+  
     id: 'houston',
     name: 'Houston Office',
-    status: 'coming-soon',
-    address: 'Houston, TX (Location TBD)',
+    status: 'active',
+    address: 'Houston, TX',
     description: 'Expanding to serve civil infrastructure projects across Texas.',
-    coordinates: { lat: 29.7604, lng: -95.3698 },
-    features: ['Oil & Gas Solutions', 'Civil Engineering', 'Pipeline Inspection']
+    coordinates: { lat: 29.78189331168656, lng: -95.64493318860919 },
+    features: ['Oil & Gas Solutions', 'Civil Engineering', 'Pipeline Inspection', 'Client Demo Area']
   }
 ];
 

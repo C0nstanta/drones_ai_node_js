@@ -29,18 +29,18 @@ export default function Footer() {
           <div>
             <div className="mb-6">
               <h3 className="text-2xl font-bold bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
-                AI Drone Solutions
+                Deep Sky Solutions
               </h3>
               <p className="text-gray-400 mt-2">
-                Headquartered in Salt Lake City, Utah
+                Headquartered in Houston, Texas
               </p>
             </div>
             <div className="space-y-3 text-sm">
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                 <address className="text-gray-400 not-italic">
-                  222 S Main Street<br />
-                  Salt Lake City, UT 84101<br />
+                  430 S Texas 6, Suite 206<br />
+                   Houston, TX 77079<br />
                   United States
                 </address>
               </div>
@@ -56,10 +56,10 @@ export default function Footer() {
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-green-400 flex-shrink-0" />
                 <a 
-                  href="mailto:contact@aidronesolutions.com" 
+                  href="mailto:contact@deepskysolutions.com" 
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  contact@aidronesolutions.com
+                  contact@deepskysolutions.com
                 </a>
               </div>
             </div>
@@ -244,10 +244,10 @@ export default function Footer() {
             
             <div className="text-center md:text-right">
               <p className="text-gray-400 text-sm">
-                © {currentYear} AI Drone Solutions. All rights reserved.
+                © {currentYear} Deep Sky Solutions. All rights reserved.
               </p>
               <p className="text-gray-500 text-xs mt-2">
-                Proudly serving Utah and the Mountain West from Salt Lake City
+                Proudly serving Houston, Texas
               </p>
             </div>
           </div>
@@ -274,7 +274,7 @@ export default function Footer() {
               Sitemap
             </Link>
             <span>•</span>
-            <span>Salt Lake City, Utah, USA 🇺🇸</span>
+            <span>Houston, Texas, USA 🇺🇸</span>
           </div>
         </div>
       </div>

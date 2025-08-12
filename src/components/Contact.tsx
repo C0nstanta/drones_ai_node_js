@@ -45,7 +45,7 @@ export default function Contact() {
     
     // Simulate form submission
     setTimeout(() => {
-      alert('Thank you for contacting AI Drone Solutions. Our Salt Lake City team will respond within 1 business day.');
+      alert('Thank you for contacting Deep Sky Solutions. Our Houston, Texas team will respond within 1 business day.');
       setFormData({
         name: '',
         email: '',
@@ -61,7 +61,7 @@ export default function Contact() {
     <section className="py-20 px-4 bg-gray-900/50">
       <div className="container mx-auto max-w-6xl">
         <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
-          Contact Our Salt Lake City Team
+          Contact Our Houston, Texas Team
         </h2>
 
         <div className="grid lg:grid-cols-2 gap-12">
@@ -76,14 +76,14 @@ export default function Contact() {
                   <MapPin className="w-6 h-6 text-green-400" />
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-1">Salt Lake City Headquarters</h4>
+                  <h4 className="font-semibold mb-1">Houston, Texas Headquarters</h4>
                   <address className="text-gray-400 not-italic">
-                    222 S Main Street<br />
-                    Salt Lake City, UT 84101<br />
+                    430 Highway 6 South, Suite 206<br />
+                    Houston, Texas 77079<br />
                     United States
                   </address>
                   <a 
-                    href="https://maps.google.com/?q=222+S+Main+Street+Salt+Lake+City+UT+84101"
+                    href="https://maps.google.com/?q=430+Highway+6+South+Suite+206+Houston+TX+77079"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-green-400 hover:text-green-300 text-sm mt-2 inline-block transition-colors"
@@ -118,10 +118,10 @@ export default function Contact() {
                 <div>
                   <h4 className="font-semibold mb-1">Email</h4>
                   <a 
-                    href="mailto:contact@aidronesolutions.com" 
+                    href="mailto:contact@deepskysolutions.com" 
                     className="text-gray-400 hover:text-white transition-colors"
                   >
-                    contact@aidronesolutions.com
+                    contact@deepskysolutions.com
                   </a>
                   <p className="text-sm text-gray-500 mt-1">We respond within 24 hours</p>
                 </div>
@@ -133,9 +133,9 @@ export default function Contact() {
                   <Clock className="w-6 h-6 text-orange-400" />
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-1">Business Hours (Mountain Time)</h4>
+                  <h4 className="font-semibold mb-1">Business Hours (Central Time)</h4>
                   <div className="text-gray-400">
-                    <p>Monday - Friday: 8:00 AM - 5:00 PM MST</p>
+                    <p>Monday - Friday: 9:00 AM - 6:00 PM CST</p>
                     <p>Saturday - Sunday: Closed</p>
                     <p className="text-sm text-gray-500 mt-1">
                       Emergency support available 24/7 for enterprise clients
@@ -261,9 +261,9 @@ export default function Contact() {
             </form>
 
             <div className="mt-8 p-6 bg-blue-900/20 border border-blue-800 rounded-lg">
-              <h4 className="font-semibold mb-2 text-blue-400">Visit Our Salt Lake City Headquarters</h4>
+              <h4 className="font-semibold mb-2 text-blue-400">Visit Our Houston, Texas Headquarters</h4>
               <p className="text-sm text-gray-300">
-                Schedule an in-person demonstration at our facility in downtown Salt Lake City. 
+                Schedule an in-person demonstration at our facility in downtown Houston, Texas. 
                 Experience our drone technology firsthand and meet our expert team.
               </p>
               <a 

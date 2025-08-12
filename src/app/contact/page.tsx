@@ -17,11 +17,11 @@ const InteractiveGlobe = dynamic(() => import('@/components/molecules/Interactiv
 });
 
 export const metadata: Metadata = {
-  title: 'Contact Us | Adaptive Auto Hub - Drone Solutions',
-  description: 'Get in touch with Adaptive Auto Hub for AI-powered drone solutions. Located in Salt Lake City, partnering with Elphel and InterProInvest.',
-  keywords: 'contact, drone services, Salt Lake City, thermal imaging, drainage inspection',
+  title: 'Contact Us | Deep Sky Solutions - Drone Solutions',
+  description: 'Get in touch with Deep Sky Solutions for AI-powered drone solutions. Located in Houston, Texas, partnering with Elphel and InterProInvest.',
+  keywords: 'contact, drone services, Houston, Texas, thermal imaging, drainage inspection',
   openGraph: {
-    title: 'Contact Adaptive Auto Hub',
+    title: 'Contact Deep Sky Solutions',
     description: 'Partner with us for revolutionary drone technology solutions',
     images: ['/images/contact-og.jpg'],
   },
@@ -54,7 +54,7 @@ export default function ContactPage() {
               </h2>
               <InteractiveGlobe />
               <p className="mt-4 text-gray-400">
-                Headquartered in Salt Lake City with planned expansion to Texas
+                Headquartered in Houston, Texas
               </p>
             </div>
           </div>

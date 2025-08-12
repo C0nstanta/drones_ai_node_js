@@ -30,9 +30,9 @@ export default function ContactMethods() {
       id: 'email',
       icon: Mail,
       title: 'Email Us',
-      value: 'info@adaptiveautohub.com',
+      value: 'info@deepskysolutions.com',
       description: 'Get a response within 24 hours',
-      action: () => window.location.href = 'mailto:info@adaptiveautohub.com'
+      action: () => window.location.href = 'mailto:info@deepskysolutions.com'
     },
     {
       id: 'phone',
