@@ -1,6 +1,4 @@
 // File: /src/components/molecules/InteractiveGlobe.tsx
-// Absolute path: /src/components/molecules/InteractiveGlobe.tsx
-
 'use client';
 
 import React, { useRef, useEffect } from 'react';
@@ -53,9 +51,6 @@ export default function InteractiveGlobe() {
     scene.add(globe);
 
     // Add lights
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-    scene.add(ambientLight);
-
     const pointLight = new THREE.PointLight(0x00ff88, 1);
     pointLight.position.set(5, 5, 5);
     scene.add(pointLight);
@@ -89,21 +84,13 @@ export default function InteractiveGlobe() {
 
   return (
     <div ref={containerRef} className={styles.globeContainer}>
-      {/* Location markers */}
-      <div 
-        className={styles.locationMarker} 
-        style={{ top: '40%', left: '30%' }}
-      />
-      <div className={styles.locationTooltip} style={{ top: '40%', left: '30%' }}>
-        Houston, Texas, UT
-      </div>
-      
+      {/* Only one location marker + tooltip for Houston */}
       <div 
         className={styles.locationMarker} 
         style={{ top: '60%', left: '45%' }}
       />
       <div className={styles.locationTooltip} style={{ top: '60%', left: '45%' }}>
-        Houston, TX (Coming Soon)
+        Houston, TX
       </div>
     </div>
   );

@@ -23,7 +23,6 @@ interface Office {
 
 const offices: Office[] = [
   {
-  
     id: 'houston',
     name: 'Houston Office',
     status: 'active',
@@ -132,7 +131,9 @@ export default function OfficeLocations() {
                     {/* Interactive map would go here */}
                     <div className={styles.mapPlaceholder}>
                       <iframe
-                        src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000!2d${office.coordinates.lng}!3d${office.coordinates.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ1JzM4LjkiTiAxMTHCsDUzJzI3LjYiVw!5e0!3m2!1sen!2sus!4v1234567890`}
+                        /* ✅ FIX: remove the hard-coded Google "pb" embed (which encoded SLC)
+                           and use the office coordinates directly so it always centers on Houston. */
+                        src={`https://www.google.com/maps?q=${office.coordinates.lat},${office.coordinates.lng}&z=14&output=embed`}
                         width="100%"
                         height="200"
                         style={{ border: 0 }}
