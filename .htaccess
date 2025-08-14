@@ -1,0 +1,12 @@
+PassengerAppType node
+PassengerAppRoot /home/kos/apps/deepsky
+PassengerStartupFile /home/kos/apps/deepsky/app.js
+PassengerNodejs /opt/cpanel/ea-nodejs18/bin/node
+# Optional if first start is slow:
+# PassengerStartTimeout 120
+
+# Serve Next.js static assets directly
+Alias "/_next/static" "/home/kos/apps/deepsky/.next/static"
+<Directory "/home/kos/apps/deepsky/.next/static">
+  Require all granted
+</Directory>
